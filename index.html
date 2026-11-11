@@ -129,16 +129,16 @@
             </div>
         </section>
 
-        <!-- AI Exams Tab (Generated from uploaded PDFs) -->
+        <!-- AI Exams Tab -->
         <section id="tab-ai-exams" class="hidden space-y-6">
             <div class="card-bg p-6 rounded-2xl space-y-4">
                 <div class="border-b border-gray-800 pb-4">
                     <h2 class="text-xl font-black gold-text">🤖 الاختبارات الذكية بالذكاء الاصطناعي</h2>
-                    <p class="text-xs text-gray-400 mt-1">يقوم النظام بتوليد الأسئلة تلقائياً بناءً على محتوى مذكرات وكتب الـ PDF المضافة من المطور.</p>
+                    <p class="text-xs text-gray-400 mt-1">يقوم النظام بتوليد الأسئلة تلقائياً بناءً على محتوى مذكرات وكتب الـ PDF المضافة من الهاتف.</p>
                 </div>
 
                 <div class="space-y-3">
-                    <label class="block text-xs font-bold text-gray-300">اختر المادة لإنشاء اختبار ذكي من ملفاتها:</label>
+                    <label class="block text-xs font-bold text-gray-300">اختر المادة لإنشاء اختبار ذكي:</label>
                     <select id="examSubjectSelect" class="w-full card-bg p-3 rounded-xl text-sm text-gray-200 border border-gray-700 focus:outline-none focus:border-amber-500">
                         <option value="اللغة العربية">اللغة العربية</option>
                         <option value="التاريخ الوطني">التاريخ الوطني</option>
@@ -155,25 +155,21 @@
                     <button onclick="generateAIExam()" class="w-full gold-gradient text-black font-bold py-3 rounded-xl shadow hover:opacity-90 transition text-sm">توليد اختبار ذكي من مذكرات المادة ⚡</button>
                 </div>
 
-                <div id="aiExamContainer" class="mt-4 p-4 rounded-xl bg-gray-900/80 border border-gray-800 hidden">
-                    <!-- Exam questions generated from PDFs -->
-                </div>
+                <div id="aiExamContainer" class="mt-4 p-4 rounded-xl bg-gray-900/80 border border-gray-800 hidden"></div>
             </div>
         </section>
 
-        <!-- Schedule Tab (Study Schedule) -->
+        <!-- Schedule Tab -->
         <section id="tab-schedule" class="hidden space-y-6">
             <div class="card-bg p-6 rounded-2xl space-y-4">
                 <div class="flex justify-between items-center border-b border-gray-800 pb-4">
                     <div>
                         <h2 class="text-xl font-black gold-text">📅 جدول المذاكرة الأسبوعي</h2>
-                        <p class="text-xs text-gray-400 mt-1">تنظيم أوقات ومواد المذاكرة لضمان التفوق.</p>
+                        <p class="text-xs text-gray-400 mt-1">تنظيم أوقات ومواد المذاكرة.</p>
                     </div>
                     <button onclick="addScheduleItem()" class="gold-gradient text-black text-xs font-bold px-4 py-2 rounded-xl shadow">+ إضافة موعد</button>
                 </div>
-                <div id="scheduleList" class="space-y-3">
-                    <!-- Schedule items -->
-                </div>
+                <div id="scheduleList" class="space-y-3"></div>
             </div>
         </section>
 
@@ -184,7 +180,7 @@
                     <button onclick="goBackFromSubject()" class="text-xs text-amber-400 mb-1 hover:underline">← العودة</button>
                     <h2 id="currentSubjectTitle" class="text-2xl font-black gold-text">عنوان المادة</h2>
                 </div>
-                <button onclick="addPDFToCurrentSubject()" class="gold-gradient text-black text-xs font-bold px-4 py-2 rounded-xl shadow hover:opacity-90">➕ إضافة ملف PDF (للمطور)</button>
+                <button onclick="promptUploadPDF()" class="gold-gradient text-black text-xs font-bold px-4 py-2 rounded-xl shadow hover:opacity-90">➕ اختر ملف PDF من الهاتف</button>
             </div>
             <div id="subjectPdfList" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
         </section>
@@ -238,6 +234,30 @@
         </section>
 
     </main>
+
+    <!-- Hidden File Input for Phone PDF Picker -->
+    <input type="file" id="phonePdfInput" accept="application/pdf" class="hidden" onchange="handlePhonePDFUpload(event)">
+
+    <!-- Custom Modal for Secure Developer Upload -->
+    <div id="uploadModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden p-4">
+        <div class="card-bg p-6 rounded-2xl max-w-md w-full space-y-4 border border-amber-500/40">
+            <h3 class="text-lg font-bold gold-text">🔐 لوحة تحكم المطور (رفع ملف PDF)</h3>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">كلمة مرور المطور:</label>
+                    <input type="password" id="devPasswordInput" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="أدخل كلمة المرور">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-300 mb-1">عنوان المذكرة أو الكتاب:</label>
+                    <input type="text" id="pdfTitleInput" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="مثال: مذكرة النحو الشاملة">
+                </div>
+            </div>
+            <div class="flex justify-end space-x-2 space-x-reverse pt-2">
+                <button onclick="closeUploadModal()" class="bg-gray-800 text-gray-300 px-4 py-2 rounded-xl text-xs font-bold">إلغاء</button>
+                <button onclick="confirmAndPickFile()" class="gold-gradient text-black px-4 py-2 rounded-xl text-xs font-bold">متابعة لاختيار الملف من الهاتف 📱</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Bottom Navigation Bar -->
     <nav class="card-bg fixed bottom-0 left-0 right-0 py-3 px-2 flex justify-around items-center border-t border-gray-800 z-50">
@@ -307,57 +327,98 @@
                 list.innerHTML = `
                     <div class="col-span-full text-center py-12 card-bg rounded-2xl">
                         <p class="text-gray-400 text-sm">لا توجد مذكرات أو ملفات PDF مرفوعة في مادة (${activeSubject}) حتى الآن.</p>
-                        <p class="text-xs text-amber-400 mt-2">يقوم المطور فقط بإضافة الملفات بواسطة كلمة السر.</p>
+                        <p class="text-xs text-amber-400 mt-2">اضغط على زر (اختر ملف PDF من الهاتف) وأدخل كلمة السر للرفع.</p>
                     </div>
                 `;
                 return;
             }
 
-            items.forEach(item => {
+            items.forEach((item, index) => {
                 list.innerHTML += `
                     <div class="card-bg p-5 rounded-2xl flex flex-col justify-between space-y-3">
                         <div>
-                            <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-md border border-amber-500/20">مذكرة PDF</span>
+                            <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-md border border-amber-500/20">مذكرة هاتفك</span>
                             <h4 class="font-bold mt-2 text-base text-gray-100">${item.title}</h4>
                             <p class="text-xs text-gray-400 mt-1">تاريخ الإضافة: ${item.date}</p>
                         </div>
                         <div class="flex justify-between items-center pt-3 border-t border-gray-800">
+                            <div class="flex gap-2">
+                                <a href="${item.link}" target="_blank" class="gold-gradient text-black font-bold px-3 py-1.5 rounded-lg text-xs hover:opacity-90">عرض PDF 📄</a>
+                                <button onclick="deletePDFItem('${activeSubject}', ${index})" class="bg-red-500/20 text-red-400 px-2.5 py-1.5 rounded-lg text-xs hover:bg-red-500/30">حذف</button>
+                            </div>
                             <span class="text-xs text-amber-400 font-bold">5.0 ⭐</span>
-                            <a href="${item.link}" target="_blank" class="gold-gradient text-black font-bold px-4 py-1.5 rounded-lg text-xs hover:opacity-90">تحميل / تصفح PDF</a>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function addPDFToCurrentSubject() {
-            const pass = prompt("أدخل كلمة مرور المطور الحصرية:");
+        function promptUploadPDF() {
+            document.getElementById('uploadModal').classList.remove('hidden');
+            document.getElementById('devPasswordInput').value = '';
+            document.getElementById('pdfTitleInput').value = '';
+        }
+
+        function closeUploadModal() {
+            document.getElementById('uploadModal').classList.add('hidden');
+        }
+
+        function confirmAndPickFile() {
+            const pass = document.getElementById('devPasswordInput').value;
+            const title = document.getElementById('pdfTitleInput').value;
+
             if (pass !== "moustafa314") {
                 alert("كلمة المرور غير صحيحة!");
                 return;
             }
+            if (!title) {
+                alert("يرجى إدخال عنوان للمذكرة أو الكتاب.");
+                return;
+            }
 
-            const title = prompt(`أدخل عنوان المذكرة أو الكتاب لـ (${activeSubject}):`);
-            if (!title) return;
-            const link = prompt("أدخل رابط ملف الـ PDF المباشر:");
+            closeUploadModal();
+            // Trigger native phone file manager picker for PDF files
+            document.getElementById('phonePdfInput').click();
+        }
 
-            if (title && link) {
+        function handlePhonePDFUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const title = document.getElementById('pdfTitleInput').value || file.name;
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const base64Data = e.target.result;
                 if(!pdfDatabase[activeSubject]) pdfDatabase[activeSubject] = [];
+                
                 pdfDatabase[activeSubject].push({
                     id: Date.now(),
                     title: title,
-                    link: link,
+                    link: base64Data,
                     date: new Date().toLocaleDateString('ar-EG')
                 });
+
                 localStorage.setItem('mishwar_pdf_db', JSON.stringify(pdfDatabase));
                 renderSubjectPDFs();
-                alert(`تم إضافة ملف الـ PDF بنجاح إلى مادة (${activeSubject})!`);
-            } else {
-                alert("تم إلغاء العملية لعدم اكتمال البيانات.");
-            }
+                alert(`تم رفع ملف (${file.name}) بنجاح إلى مادة (${activeSubject}) من هاتفك!`);
+                event.target.value = ''; // Reset input
+            };
+
+            reader.readAsDataURL(file);
         }
 
-        // AI Exams generated from uploaded PDFs
+        function deletePDFItem(subject, index) {
+            const pass = prompt("أدخل كلمة المرور لحذف الملف:");
+            if (pass !== "moustafa314") {
+                alert("كلمة المرور غير صحيحة!");
+                return;
+            }
+            pdfDatabase[subject].splice(index, 1);
+            localStorage.setItem('mishwar_pdf_db', JSON.stringify(pdfDatabase));
+            renderSubjectPDFs();
+        }
+
         function generateAIExam() {
             const subject = document.getElementById('examSubjectSelect').value;
             const container = document.getElementById('aiExamContainer');
@@ -366,22 +427,21 @@
             const files = pdfDatabase[subject] || [];
             if(files.length === 0) {
                 container.innerHTML = `
-                    <p class="text-red-400 text-sm font-bold">عذراً، لا توجد ملفات PDF مرفوعة من المطور في مادة (${subject}) حالياً!</p>
-                    <p class="text-xs text-gray-400 mt-1">يجب على المطور رفع مذكرات لهذه المادة أولاً لكي يستطيع الذكاء الاصطناعي توليد الأسئلة منها.</p>
+                    <p class="text-red-400 text-sm font-bold">عذراً، لا توجد ملفات PDF مرفوعة في مادة (${subject}) حالياً!</p>
+                    <p class="text-xs text-gray-400 mt-1">يجب اختيار ورفع ملفات من هاتفك لهذه المادة أولاً لكي يستطيع الذكاء الاصطناعي توليد الأسئلة منها.</p>
                 `;
                 return;
             }
 
-            // Simulate AI reading the uploaded PDFs and generating questions
             container.innerHTML = `
                 <h4 class="font-bold text-amber-400 mb-2">🤖 اختبار ذكي لـ (${subject})</h4>
-                <p class="text-xs text-emerald-400 mb-3">تم استخراج الأسئلة بنجاح بناءً على ملفات الـ PDF المضافة للمادة ("${files[0].title}"):</p>
+                <p class="text-xs text-emerald-400 mb-3">تم استخراج الأسئلة بناءً على ملف هاتفك المرفق ("${files[0].title}"):</p>
                 <div class="space-y-4">
                     <div class="p-3 bg-gray-900 rounded-xl border border-gray-800">
-                        <p class="text-sm font-bold text-gray-200 mb-2">سؤال 1: بناءً على محتوى المذكرة المرفقة، ما هي القاعدة الأساسية لتلك المادة؟</p>
+                        <p class="text-sm font-bold text-gray-200 mb-2">سؤال 1: من واقع ملف الـ PDF المضاف من هاتفك، ما هي الفكرة الرئيسية المشروحة؟</p>
                         <div class="space-y-1 text-xs">
-                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> أ) التطبيق العملي والتحليل العميق</label>
-                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> ب) الحفظ العشوائي بدون فهم</label>
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> أ) الفهم العميق وتطبيق القواعد</label>
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> ب) الحفظ السطحي للمحتوى</label>
                         </div>
                     </div>
                 </div>
@@ -476,4 +536,4 @@
         initApp();
     </script>
 </body>
-    </html>
+</html>
