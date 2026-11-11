@@ -20,7 +20,6 @@
     <!-- Header -->
     <header class="card-bg p-4 sticky top-0 z-50 shadow-lg flex justify-between items-center backdrop-blur-md bg-opacity-90">
         <div class="flex items-center space-x-3 space-x-reverse">
-            <!-- Logo Image in Header -->
             <img src="شعار مشوار الثانوية الذهبي.png" alt="شعار مشوار الثانوية" class="w-10 h-10 rounded-full object-cover border border-amber-500/40 shadow-md">
             <div>
                 <h1 class="font-black text-lg gold-text">مِشوار الثانوية</h1>
@@ -37,9 +36,7 @@
 
         <!-- Home Tab -->
         <section id="tab-home" class="space-y-6">
-            <!-- Welcome Banner with Background Watermark Logo -->
             <div class="card-bg p-6 rounded-2xl relative overflow-hidden shadow-xl">
-                <!-- Background Logo Watermark -->
                 <div class="absolute -left-6 -bottom-6 w-48 h-48 opacity-10 pointer-events-none flex items-center justify-center">
                     <img src="شعار مشوار الثانوية الذهبي.png" alt="خلفية الشعار" class="w-full h-full object-contain filter drop-shadow">
                 </div>
@@ -55,7 +52,6 @@
                 </div>
             </div>
 
-            <!-- Daily Tip Card on Home -->
             <div class="card-bg p-5 rounded-2xl border-l-4 border-l-amber-500">
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-xs text-amber-400 font-bold">💡 نصيحة اليوم الدراسية</span>
@@ -84,7 +80,7 @@
             </div>
         </section>
 
-        <!-- Tracks & Specializations Tab -->
+        <!-- Tracks Tab -->
         <section id="tab-tracks" class="hidden space-y-6">
             <h2 class="text-xl font-black gold-text mb-4">🎓 المسارات التخصصية وموادها الدراسية</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -142,15 +138,13 @@
             </div>
         </section>
 
-        <!-- Library Tab (Admin Controlled Only) -->
+        <!-- Library Tab -->
         <section id="tab-library" class="hidden space-y-6">
             <div class="flex justify-between items-center">
                 <h2 class="text-xl font-black gold-text">📖 المكتبة الشاملة ومذكرات PDF الحصرية</h2>
                 <input type="text" id="searchBox" placeholder="ابحث في مذكراتك..." onkeyup="filterLibrary()" class="card-bg px-4 py-2 rounded-xl text-sm focus:outline-none focus:border-amber-500 w-1/2">
             </div>
-            <div id="libraryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <!-- Populated exclusively by Admin -->
-            </div>
+            <div id="libraryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
         </section>
 
         <!-- Tips Tab -->
@@ -203,10 +197,9 @@
             </div>
         </section>
 
-        <!-- Profile & Admin Dashboard Tab -->
+        <!-- Profile Tab -->
         <section id="tab-profile" class="hidden space-y-6">
             <div class="card-bg p-6 rounded-2xl text-center space-y-4">
-                <!-- Logo Image in Profile -->
                 <div class="w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-lg border-2 border-amber-500 overflow-hidden bg-gray-900">
                     <img src="شعار مشوار الثانوية الذهبي.png" alt="شعار المطور" class="w-full h-full object-cover">
                 </div>
@@ -405,7 +398,7 @@
         }
 
         function toggleTask(index) {
-            tasks.[index].done = !tasks[index].done;
+            tasks[index].done = !tasks[index].done;
             localStorage.setItem('mishwar_tasks', JSON.stringify(tasks));
             renderTasks();
         }
