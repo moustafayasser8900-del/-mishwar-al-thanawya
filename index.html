@@ -43,10 +43,10 @@
                 
                 <div class="relative z-10">
                     <h2 class="text-2xl font-black mb-2">أهلاً بك يا بطل في <span class="gold-text">مِشوار الثانوية</span> 👋</h2>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. اختر مسارك الدراسي، تابع نصيحة اليوم، وتنافس مع زملائك في لوحة المتصدرين.</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. اختر مسارك الدراسي واستعرض المواد التعليمية والمذكرات.</p>
                     <div class="flex flex-wrap gap-3">
                         <button onclick="switchTab('tracks')" class="gold-gradient text-black font-bold px-5 py-2.5 rounded-xl shadow hover:opacity-90 transition text-sm">اختر مسارك الدراسي</button>
-                        <button onclick="switchTab('tips')" class="bg-blue-600/25 text-blue-300 border border-blue-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-blue-600/35 transition text-sm">💡 نصيحة اليوم</button>
+                        <button onclick="switchTab('library')" class="bg-blue-600/25 text-blue-300 border border-blue-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-blue-600/35 transition text-sm">📚 المكتبة الشاملة</button>
                         <button onclick="switchTab('leaderboard')" class="bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-amber-500/30 transition text-sm">🏆 لوحة المتصدرين</button>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
                     <p class="text-xs text-gray-400 mt-1">مسارات تخصصية</p>
                 </div>
                 <div class="card-bg p-4 rounded-xl text-center">
-                    <span class="text-2xl font-black text-blue-400">PDF</span>
-                    <p class="text-xs text-gray-400 mt-1">مذكراتك الحصرية</p>
+                    <span class="text-2xl font-black text-blue-400">3</span>
+                    <p class="text-xs text-gray-400 mt-1">مواد عامة في المكتبة</p>
                 </div>
                 <div class="card-bg p-4 rounded-xl text-center">
                     <span class="text-2xl font-black text-emerald-400">🏆</span>
@@ -84,67 +84,104 @@
         <section id="tab-tracks" class="hidden space-y-6">
             <h2 class="text-xl font-black gold-text mb-4">🎓 المسارات التخصصية وموادها الدراسية</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار الهندسة')">
+                <!-- Track 1 -->
+                <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between">
                         <span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">مسار علمي</span>
                         <span class="text-lg">💻</span>
                     </div>
                     <h3 class="font-bold text-lg text-amber-300">مسار الهندسة وعلوم الحاسب</h3>
-                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <p class="text-xs text-gray-400">اختر المادة لتصفح الملفات:</p>
                     <div class="flex gap-2 flex-wrap">
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة البرمجة</span>
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة الكيمياء</span>
+                        <button onclick="openSubjectPage('مادة البرمجة')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">💻 مادة البرمجة</button>
+                        <button onclick="openSubjectPage('مادة الكيمياء')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">🧪 مادة الكيمياء</button>
                     </div>
                 </div>
 
-                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار الطب')">
+                <!-- Track 2 -->
+                <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between">
                         <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">مسار علمي</span>
                         <span class="text-lg">🧬</span>
                     </div>
                     <h3 class="font-bold text-lg text-amber-300">مسار الطب وعلوم الحياة</h3>
-                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <p class="text-xs text-gray-400">اختر المادة لتصفح الملفات:</p>
                     <div class="flex gap-2 flex-wrap">
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة الرياضيات</span>
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة الفيزياء</span>
+                        <button onclick="openSubjectPage('مادة الرياضيات')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">📐 مادة الرياضيات</button>
+                        <button onclick="openSubjectPage('مادة الفيزياء')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">⚡ مادة الفيزياء</button>
                     </div>
                 </div>
 
-                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار الآداب')">
+                <!-- Track 3 -->
+                <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between">
                         <span class="text-xs bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full border border-purple-500/20">مسار أدبي</span>
                         <span class="text-lg">📚</span>
                     </div>
                     <h3 class="font-bold text-lg text-amber-300">مسار الآداب والفنون</h3>
-                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <p class="text-xs text-gray-400">اختر المادة لتصفح الملفات:</p>
                     <div class="flex gap-2 flex-wrap">
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة اللغة الثانية</span>
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة علم النفس</span>
+                        <button onclick="openSubjectPage('مادة اللغة الثانية')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">🌐 مادة اللغة الثانية</button>
+                        <button onclick="openSubjectPage('مادة علم النفس')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">🧠 مادة علم النفس</button>
                     </div>
                 </div>
 
-                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار إدارة الأعمال')">
+                <!-- Track 4 -->
+                <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between">
                         <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20">مسار تجاري</span>
                         <span class="text-lg">📈</span>
                     </div>
                     <h3 class="font-bold text-lg text-amber-300">مسار إدارة الأعمال</h3>
-                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <p class="text-xs text-gray-400">اختر المادة لتصفح الملفات:</p>
                     <div class="flex gap-2 flex-wrap">
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة إدارة الأعمال</span>
-                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة المحاسبة</span>
+                        <button onclick="openSubjectPage('مادة إدارة الأعمال')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">💼 مادة إدارة الأعمال</button>
+                        <button onclick="openSubjectPage('مادة المحاسبة')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 hover:text-amber-300 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">📊 مادة المحاسبة</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Library Tab -->
+        <!-- Library Tab (3 Main Categories) -->
         <section id="tab-library" class="hidden space-y-6">
-            <div class="flex justify-between items-center">
-                <h2 class="text-xl font-black gold-text">📖 المكتبة الشاملة ومذكرات PDF الحصرية</h2>
-                <input type="text" id="searchBox" placeholder="ابحث في مذكراتك..." onkeyup="filterLibrary()" class="card-bg px-4 py-2 rounded-xl text-sm focus:outline-none focus:border-amber-500 w-1/2">
+            <h2 class="text-xl font-black gold-text mb-4">📖 المكتبة الشاملة (المواد الأساسية)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div onclick="openSubjectPage('اللغة العربية')" class="card-bg p-6 rounded-2xl text-center cursor-pointer hover:border-amber-500 transition space-y-3">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-500/20 text-amber-400 mx-auto flex items-center justify-center text-2xl font-black">📖</div>
+                    <h3 class="font-bold text-lg">اللغة العربية</h3>
+                    <p class="text-xs text-gray-400">النحو، البلاغة، الأدب، والنصوص</p>
+                    <span class="inline-block gold-gradient text-black text-xs font-bold px-4 py-1.5 rounded-lg mt-2">دخول المادة ←</span>
+                </div>
+
+                <div onclick="openSubjectPage('التاريخ الوطني')" class="card-bg p-6 rounded-2xl text-center cursor-pointer hover:border-amber-500 transition space-y-3">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-500/20 text-blue-400 mx-auto flex items-center justify-center text-2xl font-black">📜</div>
+                    <h3 class="font-bold text-lg">التاريخ الوطني</h3>
+                    <p class="text-xs text-gray-400">ملخصات التاريخ والأحداث الوطنية</p>
+                    <span class="inline-block gold-gradient text-black text-xs font-bold px-4 py-1.5 rounded-lg mt-2">دخول المادة ←</span>
+                </div>
+
+                <div onclick="openSubjectPage('اللغة الإنجليزية')" class="card-bg p-6 rounded-2xl text-center cursor-pointer hover:border-amber-500 transition space-y-3">
+                    <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center text-2xl font-black">🔤</div>
+                    <h3 class="font-bold text-lg">اللغة الإنجليزية</h3>
+                    <p class="text-xs text-gray-400">Grammar, Vocabulary & Skills</p>
+                    <span class="inline-block gold-gradient text-black text-xs font-bold px-4 py-1.5 rounded-lg mt-2">دخول المادة ←</span>
+                </div>
             </div>
-            <div id="libraryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+        </section>
+
+        <!-- Dynamic Subject View Page -->
+        <section id="tab-subject-view" class="hidden space-y-6">
+            <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                <div>
+                    <button onclick="goBackFromSubject()" class="text-xs text-amber-400 mb-1 hover:underline">← العودة للخلف</button>
+                    <h2 id="currentSubjectTitle" class="text-2xl font-black gold-text">عنوان المادة</h2>
+                </div>
+                <button onclick="addPDFToCurrentSubject()" class="gold-gradient text-black text-xs font-bold px-4 py-2 rounded-xl shadow hover:opacity-90">➕ إضافة ملف PDF (للمطور فقط)</button>
+            </div>
+
+            <div id="subjectPdfList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- PDF Files inside this subject -->
+            </div>
         </section>
 
         <!-- Tips Tab -->
@@ -207,9 +244,8 @@
                     <h3 class="text-xl font-bold">مصطفى ياسر</h3>
                     <p class="text-xs text-gray-400 mt-1">مطور تطبيق مِشوار الثانوية • المشرف الرئيسي (التحكم الكامل)</p>
                 </div>
-                <div class="pt-4 border-t border-gray-800 flex flex-col sm:flex-row justify-center gap-4">
+                <div class="pt-4 border-t border-gray-800 flex justify-center">
                     <a href="https://t.me/mostafa0o0o0" target="_blank" class="bg-blue-500/20 text-blue-400 border border-blue-500/30 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-blue-500/30 transition">تواصل عبر تليجرام (mostafa0o0o0)</a>
-                    <button onclick="openAdminDashboard()" class="gold-gradient text-black px-5 py-2.5 rounded-xl text-sm font-bold shadow hover:opacity-90 transition">🔐 لوحة تحكم المشرف (إضافة ملفات PDF)</button>
                 </div>
             </div>
         </section>
@@ -246,7 +282,9 @@
 
     <!-- JavaScript Logic -->
     <script>
-        let libraryItems = JSON.parse(localStorage.getItem('mishwar_library')) || [];
+        let pdfDatabase = JSON.parse(localStorage.getItem('mishwar_pdf_db')) || {};
+        let activeSubject = "";
+        let previousTab = "tracks";
 
         const dailyTips = [
             "ابدأ يومك الدراسي بالمواد الصعبة وأنت بكامل طاقتك الذهنية والتركيز.",
@@ -276,8 +314,78 @@
 
             renderTipsList();
             renderLeaderboard();
-            renderLibrary();
             renderTasks();
+        }
+
+        function openSubjectPage(subjectName) {
+            previousTab = document.querySelector('section:not(.hidden)').id.replace('tab-', '');
+            activeSubject = subjectName;
+            document.getElementById('currentSubjectTitle').innerText = subjectName;
+            renderSubjectPDFs();
+            switchTab('subject-view');
+        }
+
+        function goBackFromSubject() {
+            switchTab(previousTab || 'tracks');
+        }
+
+        function renderSubjectPDFs() {
+            const list = document.getElementById('subjectPdfList');
+            list.innerHTML = "";
+            const items = pdfDatabase[activeSubject] || [];
+
+            if(items.length === 0) {
+                list.innerHTML = `
+                    <div class="col-span-full text-center py-12 card-bg rounded-2xl">
+                        <p class="text-gray-400 text-sm">لا توجد مذكرات أو ملفات PDF مرفوعة في مادة (${activeSubject}) حتى الآن.</p>
+                        <p class="text-xs text-amber-400 mt-2">يقوم المطور فقط بإضافة الملفات بواسطة كلمة السر.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            items.forEach(item => {
+                list.innerHTML += `
+                    <div class="card-bg p-5 rounded-2xl flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-md border border-amber-500/20">مذكرة PDF</span>
+                            <h4 class="font-bold mt-2 text-base text-gray-100">${item.title}</h4>
+                            <p class="text-xs text-gray-400 mt-1">تاريخ الإضافة: ${item.date}</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-800">
+                            <span class="text-xs text-amber-400 font-bold">5.0 ⭐</span>
+                            <a href="${item.link}" target="_blank" class="gold-gradient text-black font-bold px-4 py-1.5 rounded-lg text-xs hover:opacity-90">تحميل / تصفح PDF</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function addPDFToCurrentSubject() {
+            const pass = prompt("أدخل كلمة مرور المطور الحصرية (moustafa314):");
+            if (pass !== "moustafa314") {
+                alert("كلمة المرور غير صحيحة! إضافة الملفات مخصصة للمطور مصطفى ياسر فقط.");
+                return;
+            }
+
+            const title = prompt(`أدخل عنوان المذكرة أو الكتاب لـ (${activeSubject}):`);
+            if (!title) return;
+            const link = prompt("أدخل رابط ملف الـ PDF المباشر:");
+
+            if (title && link) {
+                if(!pdfDatabase[activeSubject]) pdfDatabase[activeSubject] = [];
+                pdfDatabase[activeSubject].push({
+                    id: Date.now(),
+                    title: title,
+                    link: link,
+                    date: new Date().toLocaleDateString('ar-EG')
+                });
+                localStorage.setItem('mishwar_pdf_db', JSON.stringify(pdfDatabase));
+                renderSubjectPDFs();
+                alert(`تم إضافة ملف الـ PDF بنجاح إلى مادة (${activeSubject})!`);
+            } else {
+                alert("تم إلغاء العملية لعدم اكتمال البيانات.");
+            }
         }
 
         function renderTipsList() {
@@ -309,75 +417,6 @@
                     </tr>
                 `;
             });
-        }
-
-        function renderLibrary(filter = "") {
-            const grid = document.getElementById('libraryGrid');
-            if(!grid) return;
-            if(filter) {
-                const searchInput = document.getElementById('searchBox');
-                if(searchInput) searchInput.value = filter;
-            }
-            const query = document.getElementById('searchBox') ? document.getElementById('searchBox').value.toLowerCase() : "";
-            grid.innerHTML = "";
-            
-            const filtered = libraryItems.filter(i => i.title.toLowerCase().includes(query) || i.subject.toLowerCase().includes(query) || i.type.toLowerCase().includes(query));
-            
-            if(filtered.length === 0) {
-                grid.innerHTML = `<p class="text-gray-400 col-span-full text-center py-12">المكتبة فارغة حالياً. لا توجد مذكرات مرفوعة سوى التي تقوم أنت بإضافتها عبر لوحة التحكم الخاصة بك.</p>`;
-                return;
-            }
-
-            filtered.forEach(item => {
-                grid.innerHTML += `
-                    <div class="card-bg p-5 rounded-2xl flex flex-col justify-between space-y-3">
-                        <div>
-                            <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-md border border-amber-500/20">${item.subject}</span>
-                            <h4 class="font-bold mt-2 text-base">${item.title}</h4>
-                            <p class="text-xs text-gray-400 mt-1">النوع: ${item.type}</p>
-                        </div>
-                        <div class="flex justify-between items-center pt-3 border-t border-gray-800">
-                            <span class="text-xs text-amber-400 font-bold">${item.rating}</span>
-                            <a href="${item.link}" target="_blank" class="gold-gradient text-black font-bold px-4 py-1.5 rounded-lg text-xs">تحميل PDF</a>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function filterLibrary() {
-            renderLibrary();
-        }
-
-        function openAdminDashboard() {
-            const pass = prompt("أدخل كلمة مرور المشرف الحصرية (moustafa314):");
-            if (pass !== "moustafa314") {
-                alert("كلمة المرور غير صحيحة! الدخول مخصص للمطور مصطفى ياسر فقط.");
-                return;
-            }
-
-            const title = prompt("أدخل عنوان المذكرة أو الكتاب الجديد:");
-            if (!title) return;
-            const subject = prompt("اختر المسار (مسار الهندسة وعلوم الحاسب / مسار الطب وعلوم الحياة / مسار الآداب والفنون / مسار إدارة الأعمال):");
-            const type = prompt("أدخل اسم المادة (مثلاً: مادة البرمجة، مادة الكيمياء، إلخ):");
-            const link = prompt("أدخل رابط ملف الـ PDF المباشر:");
-
-            if (title && subject && link) {
-                libraryItems.push({
-                    id: Date.now(),
-                    title: title,
-                    subject: subject,
-                    type: type || "مذكرة PDF",
-                    rating: "5.0 ⭐",
-                    link: link
-                });
-                localStorage.setItem('mishwar_library', JSON.stringify(libraryItems));
-                switchTab('library');
-                renderLibrary();
-                alert("تم رفع وإضافة ملف الـ PDF بنجاح إلى المكتبة!");
-            } else {
-                alert("تم إلغاء العملية أو نقصت بعض البيانات.");
-            }
         }
 
         function renderTasks() {
@@ -419,7 +458,7 @@
         }
 
         function switchTab(tabId) {
-            ['home', 'tracks', 'library', 'tips', 'leaderboard', 'tasks', 'profile'].forEach(t => {
+            ['home', 'tracks', 'library', 'subject-view', 'tips', 'leaderboard', 'tasks', 'profile'].forEach(t => {
                 const el = document.getElementById(`tab-${t}`);
                 const btn = document.getElementById(`btn-${t}`);
                 if(el) el.classList.add('hidden');
