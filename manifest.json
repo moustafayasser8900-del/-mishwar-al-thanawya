@@ -1,0 +1,26 @@
+{
+  "name": "مِشوار الثانوية | المنصة التعليمية المتكاملة",
+  "short_name": "مِشوار الثانوية",
+  "description": "منصة تعليمية متكاملة لطلاب الثانوية العامة والبكالوريا، تشمل المسارات التخصصية والمكتبة الشاملة واختبارات الذكاء الاصطناعي.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0f19",
+  "theme_color": "#d4af37",
+  "orientation": "portrait",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "شعار مشوار الثانوية الذهبي.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "شعار مشوار الثانوية الذهبي.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
