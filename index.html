@@ -15,12 +15,13 @@
         .card-bg:hover { border-color: rgba(212, 175, 55, 0.4); }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between pb-20">
+<body class="min-h-screen flex flex-col justify-between pb-24">
 
     <!-- Header -->
     <header class="card-bg p-4 sticky top-0 z-50 shadow-lg flex justify-between items-center backdrop-blur-md bg-opacity-90">
         <div class="flex items-center space-x-3 space-x-reverse">
-            <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center font-black text-black text-lg shadow">مش</div>
+            <!-- Logo Image in Header -->
+            <img src="شعار مشوار الثانوية الذهبي.png" alt="شعار مشوار الثانوية" class="w-10 h-10 rounded-full object-cover border border-amber-500/40 shadow-md">
             <div>
                 <h1 class="font-black text-lg gold-text">مِشوار الثانوية</h1>
                 <p class="text-xs text-gray-400">بواسطة: Moustafa Yasser</p>
@@ -36,123 +37,186 @@
 
         <!-- Home Tab -->
         <section id="tab-home" class="space-y-6">
-            <!-- Welcome Banner -->
+            <!-- Welcome Banner with Background Watermark Logo -->
             <div class="card-bg p-6 rounded-2xl relative overflow-hidden shadow-xl">
-                <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl"></div>
-                <h2 class="text-2xl font-black mb-2">أهلاً بك يا بطل في <span class="gold-text">مِشوار الثانوية</span> 👋</h2>
-                <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. كل ما تحتاجه من مذكرات، كتب، اختبارات، وجداول تنظيمية في مكان واحد.</p>
-                <div class="flex flex-wrap gap-3">
-                    <button onclick="switchTab('library')" class="gold-gradient text-black font-bold px-5 py-2.5 rounded-xl shadow hover:opacity-90 transition text-sm">استكشف المذكرات والكتب</button>
-                    <button onclick="switchTab('ai')" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-blue-600/30 transition text-sm">اسأل زكي (الذكاء الاصطناعي)</button>
+                <!-- Background Logo Watermark -->
+                <div class="absolute -left-6 -bottom-6 w-48 h-48 opacity-10 pointer-events-none flex items-center justify-center">
+                    <img src="شعار مشوار الثانوية الذهبي.png" alt="خلفية الشعار" class="w-full h-full object-contain filter drop-shadow">
+                </div>
+                
+                <div class="relative z-10">
+                    <h2 class="text-2xl font-black mb-2">أهلاً بك يا بطل في <span class="gold-text">مِشوار الثانوية</span> 👋</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. اختر مسارك الدراسي، تابع نصيحة اليوم، وتنافس مع زملائك في لوحة المتصدرين.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="switchTab('tracks')" class="gold-gradient text-black font-bold px-5 py-2.5 rounded-xl shadow hover:opacity-90 transition text-sm">اختر مسارك الدراسي</button>
+                        <button onclick="switchTab('tips')" class="bg-blue-600/25 text-blue-300 border border-blue-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-blue-600/35 transition text-sm">💡 نصيحة اليوم</button>
+                        <button onclick="switchTab('leaderboard')" class="bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-amber-500/30 transition text-sm">🏆 لوحة المتصدرين</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Quick Stats -->
+            <!-- Daily Tip Card on Home -->
+            <div class="card-bg p-5 rounded-2xl border-l-4 border-l-amber-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs text-amber-400 font-bold">💡 نصيحة اليوم الدراسية</span>
+                    <span class="text-xs text-gray-400">متجددة يومياً</span>
+                </div>
+                <p id="dailyTipText" class="text-sm text-gray-200 leading-relaxed">جاري تحميل نصيحة اليوم...</p>
+            </div>
+
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="card-bg p-4 rounded-xl text-center">
-                    <span class="text-2xl font-black gold-text">100%</span>
-                    <p class="text-xs text-gray-400 mt-1">محتوى مجاني</p>
+                    <span class="text-2xl font-black gold-text">4</span>
+                    <p class="text-xs text-gray-400 mt-1">مسارات تخصصية</p>
                 </div>
                 <div class="card-bg p-4 rounded-xl text-center">
-                    <span class="text-2xl font-black text-blue-400">5+</span>
-                    <p class="text-xs text-gray-400 mt-1">مواد دراسية أساسية</p>
+                    <span class="text-2xl font-black text-blue-400">PDF</span>
+                    <p class="text-xs text-gray-400 mt-1">مذكراتك الحصرية</p>
                 </div>
                 <div class="card-bg p-4 rounded-xl text-center">
-                    <span class="text-2xl font-black text-emerald-400">24/7</span>
-                    <p class="text-xs text-gray-400 mt-1">مساعد ذكي متاح</p>
+                    <span class="text-2xl font-black text-emerald-400">🏆</span>
+                    <p class="text-xs text-gray-400 mt-1">لوحة المتصدرين</p>
                 </div>
                 <div class="card-bg p-4 rounded-xl text-center">
-                    <span class="text-2xl font-black text-purple-400">الكل</span>
-                    <p class="text-xs text-gray-400 mt-1">مذكرات وملخصات</p>
+                    <span class="text-2xl font-black text-purple-400">100%</span>
+                    <p class="text-xs text-gray-400 mt-1">مجاني بالكامل</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Subjects Grid -->
-            <div>
-                <h3 class="text-lg font-bold mb-4 flex items-center justify-between">
-                    <span>📚 المواد الدراسية</span>
-                    <span class="text-xs text-amber-400 cursor-pointer" onclick="switchTab('library')">عرض الكل ←</span>
-                </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    <div class="card-bg p-5 rounded-2xl cursor-pointer hover:scale-[1.02] transition" onclick="openSubject('اللغة العربية')">
-                        <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold mb-3 text-xl">ض</div>
-                        <h4 class="font-bold text-lg mb-1">اللغة العربية</h4>
-                        <p class="text-xs text-gray-400">النحو، النصوص، البلاغة، والأدب</p>
+        <!-- Tracks & Specializations Tab -->
+        <section id="tab-tracks" class="hidden space-y-6">
+            <h2 class="text-xl font-black gold-text mb-4">🎓 المسارات التخصصية وموادها الدراسية</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار الهندسة')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">مسار علمي</span>
+                        <span class="text-lg">💻</span>
                     </div>
-                    <div class="card-bg p-5 rounded-2xl cursor-pointer hover:scale-[1.02] transition" onclick="openSubject('التاريخ المصري')">
-                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold mb-3 text-xl">📜</div>
-                        <h4 class="font-bold text-lg mb-1">التاريخ المصري</h4>
-                        <p class="text-xs text-gray-400">ملخصات التاريخ في 10 صفحات</p>
+                    <h3 class="font-bold text-lg text-amber-300">مسار الهندسة وعلوم الحاسب</h3>
+                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة البرمجة</span>
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة الكيمياء</span>
                     </div>
-                    <div class="card-bg p-5 rounded-2xl cursor-pointer hover:scale-[1.02] transition" onclick="openSubject('اللغة الإنجليزية')">
-                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold mb-3 text-xl">Eng</div>
-                        <h4 class="font-bold text-lg mb-1">اللغة الإنجليزية</h4>
-                        <p class="text-xs text-gray-400">Grammar, Vocab & Skills</p>
+                </div>
+
+                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار الطب')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">مسار علمي</span>
+                        <span class="text-lg">🧬</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-amber-300">مسار الطب وعلوم الحياة</h3>
+                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة الرياضيات</span>
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة الفيزياء</span>
+                    </div>
+                </div>
+
+                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار الآداب')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full border border-purple-500/20">مسار أدبي</span>
+                        <span class="text-lg">📚</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-amber-300">مسار الآداب والفنون</h3>
+                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة اللغة الثانية</span>
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة علم النفس</span>
+                    </div>
+                </div>
+
+                <div class="card-bg p-5 rounded-2xl space-y-3 cursor-pointer hover:border-amber-500 transition" onclick="filterLibrary('مسار إدارة الأعمال')">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20">مسار تجاري</span>
+                        <span class="text-lg">📈</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-amber-300">مسار إدارة الأعمال</h3>
+                    <p class="text-xs text-gray-400">المواد الأساسية:</p>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة إدارة الأعمال</span>
+                        <span class="bg-gray-800 text-gray-200 text-xs px-3 py-1 rounded-lg border border-gray-700">مادة المحاسبة</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Library Tab (Books & Summaries) -->
+        <!-- Library Tab (Admin Controlled Only) -->
         <section id="tab-library" class="hidden space-y-6">
             <div class="flex justify-between items-center">
-                <h2 class="text-xl font-black gold-text">📖 المكتبة الشاملة (كتب ومذكرات)</h2>
-                <input type="text" id="searchBox" placeholder="ابحث عن مذكرة أو كتاب..." onkeyup="filterLibrary()" class="card-bg px-4 py-2 rounded-xl text-sm focus:outline-none focus:border-amber-500 w-1/2">
+                <h2 class="text-xl font-black gold-text">📖 المكتبة الشاملة ومذكرات PDF الحصرية</h2>
+                <input type="text" id="searchBox" placeholder="ابحث في مذكراتك..." onkeyup="filterLibrary()" class="card-bg px-4 py-2 rounded-xl text-sm focus:outline-none focus:border-amber-500 w-1/2">
             </div>
-
             <div id="libraryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <!-- Items populated by JS -->
+                <!-- Populated exclusively by Admin -->
             </div>
         </section>
 
-        <!-- Tasks Tab (Planner) -->
+        <!-- Tips Tab -->
+        <section id="tab-tips" class="hidden space-y-6">
+            <div class="card-bg p-6 rounded-2xl space-y-4">
+                <h2 class="text-xl font-black gold-text flex items-center gap-2">
+                    <span>💡</span> نصائح اليوم والإرشادات الدراسية
+                </h2>
+                <p class="text-xs text-gray-400">نصائح يومية متجددة لرفع كفاءة استذكارك وتنظيم وقتك في الثانوية.</p>
+                <div id="tipsContainer" class="space-y-4"></div>
+            </div>
+        </section>
+
+        <!-- Leaderboard Tab -->
+        <section id="tab-leaderboard" class="hidden space-y-6">
+            <div class="card-bg p-6 rounded-2xl space-y-4">
+                <div class="flex items-center justify-between border-b border-gray-800 pb-4">
+                    <div>
+                        <h2 class="text-xl font-black gold-text">🏆 لوحة المتصدرين وتتبع الطلاب</h2>
+                        <p class="text-xs text-gray-400 mt-1">متابعة نسب الالتزام، المشاركة المستمرة، ومستوى الدرجات في البرنامج.</p>
+                    </div>
+                    <span class="bg-amber-500/10 text-amber-400 text-xs px-3 py-1.5 rounded-xl border border-amber-500/30 font-bold">موسم التميز</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-right text-sm">
+                        <thead>
+                            <tr class="border-b border-gray-800 text-gray-400 text-xs">
+                                <th class="py-3 px-4">المرتبة</th>
+                                <th class="py-3 px-4">اسم الطالب</th>
+                                <th class="py-3 px-4">المسار الدراسي</th>
+                                <th class="py-3 px-4">نسبة المتابعة</th>
+                                <th class="py-3 px-4">مستوى الدرجات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardTableBody" class="divide-y divide-gray-800/60"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tasks Tab -->
         <section id="tab-tasks" class="hidden space-y-6">
             <div class="flex justify-between items-center">
                 <h2 class="text-xl font-black gold-text">📅 خطة اليوم ومهام المذاكرة</h2>
-                <button onclick="openAddTaskModal()" class="gold-gradient text-black font-bold px-4 py-2 rounded-xl text-sm">+ إضافة مهمة جديدة</button>
+                <button onclick="openAddTaskModal()" class="gold-gradient text-black font-bold px-4 py-2 rounded-xl text-sm">+ إضافة مهمة</button>
             </div>
-
             <div class="card-bg p-6 rounded-2xl">
-                <div id="tasksList" class="space-y-3">
-                    <!-- Tasks items -->
-                </div>
+                <div id="tasksList" class="space-y-3"></div>
             </div>
         </section>
 
-        <!-- AI Assistant Tab ("Zaki") -->
-        <section id="tab-ai" class="hidden space-y-6">
-            <div class="card-bg p-6 rounded-2xl flex flex-col h-[70vh]">
-                <div class="flex items-center space-x-3 space-x-reverse border-b border-gray-800 pb-4 mb-4">
-                    <div class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold">🤖</div>
-                    <div>
-                        <h3 class="font-bold">زكي - مساعدك الدراسي بالذكاء الاصطناعي</h3>
-                        <p class="text-xs text-gray-400">اسأل في أي حاجة في المنهج وسأقوم بمساعدتك فوراً مجاناً</p>
-                    </div>
-                </div>
-                
-                <div id="chatMessages" class="flex-grow overflow-y-auto space-y-3 pr-2 text-sm">
-                    <div class="bg-blue-600/10 border border-blue-500/20 p-3 rounded-xl max-w-[80%]">
-                        أهلاً يا مصطفى! أنا زكي مساعدك الذكي. اطرح علي أي سؤال في المواد الدراسية أو في البرمجة وسأقوم بحله لك فوراً!
-                    </div>
-                </div>
-
-                <div class="mt-4 flex gap-2 pt-2 border-t border-gray-800">
-                    <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا..." class="card-bg flex-grow px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-blue-500" onkeypress="if(event.key === 'Enter') sendAIMessage()">
-                    <button onclick="sendAIMessage()" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-blue-500 transition">إرسال</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Profile Tab -->
+        <!-- Profile & Admin Dashboard Tab -->
         <section id="tab-profile" class="hidden space-y-6">
             <div class="card-bg p-6 rounded-2xl text-center space-y-4">
-                <div class="w-20 h-20 rounded-full gold-gradient mx-auto flex items-center justify-center text-black text-3xl font-black shadow-lg">MY</div>
+                <!-- Logo Image in Profile -->
+                <div class="w-20 h-20 rounded-full mx-auto flex items-center justify-center shadow-lg border-2 border-amber-500 overflow-hidden bg-gray-900">
+                    <img src="شعار مشوار الثانوية الذهبي.png" alt="شعار المطور" class="w-full h-full object-cover">
+                </div>
                 <div>
                     <h3 class="text-xl font-bold">مصطفى ياسر</h3>
-                    <p class="text-xs text-gray-400 mt-1">مطور تطبيق مِشوار الثانوية • طالب بالثانوية العامة</p>
+                    <p class="text-xs text-gray-400 mt-1">مطور تطبيق مِشوار الثانوية • المشرف الرئيسي (التحكم الكامل)</p>
                 </div>
-                <div class="pt-4 border-t border-gray-800 flex justify-center gap-4">
+                <div class="pt-4 border-t border-gray-800 flex flex-col sm:flex-row justify-center gap-4">
                     <a href="https://t.me/mostafa0o0o0" target="_blank" class="bg-blue-500/20 text-blue-400 border border-blue-500/30 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-blue-500/30 transition">تواصل عبر تليجرام (mostafa0o0o0)</a>
+                    <button onclick="openAdminDashboard()" class="gold-gradient text-black px-5 py-2.5 rounded-xl text-sm font-bold shadow hover:opacity-90 transition">🔐 لوحة تحكم المشرف (إضافة ملفات PDF)</button>
                 </div>
             </div>
         </section>
@@ -160,52 +224,117 @@
     </main>
 
     <!-- Bottom Navigation Bar -->
-    <nav class="card-bg fixed bottom-0 left-0 right-0 py-3 px-6 flex justify-around items-center border-t border-gray-800 z-50">
+    <nav class="card-bg fixed bottom-0 left-0 right-0 py-3 px-4 flex justify-around items-center border-t border-gray-800 z-50">
         <button onclick="switchTab('home')" id="btn-home" class="flex flex-col items-center text-amber-400 transition">
-            <span class="text-lg">🏠</span>
-            <span class="text-xs mt-1 font-bold">الرئيسية</span>
+            <span class="text-base">🏠</span>
+            <span class="text-[10px] mt-1 font-bold">الرئيسية</span>
+        </button>
+        <button onclick="switchTab('tracks')" id="btn-tracks" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
+            <span class="text-base">🎓</span>
+            <span class="text-[10px] mt-1 font-bold">المسارات</span>
         </button>
         <button onclick="switchTab('library')" id="btn-library" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
-            <span class="text-lg">📚</span>
-            <span class="text-xs mt-1 font-bold">المكتبة</span>
+            <span class="text-base">📚</span>
+            <span class="text-[10px] mt-1 font-bold">المكتبة</span>
         </button>
-        <button onclick="switchTab('tasks')" id="btn-tasks" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
-            <span class="text-lg">📅</span>
-            <span class="text-xs mt-1 font-bold">المهام</span>
+        <button onclick="switchTab('tips')" id="btn-tips" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
+            <span class="text-base">💡</span>
+            <span class="text-[10px] mt-1 font-bold">النصائح</span>
         </button>
-        <button onclick="switchTab('ai')" id="btn-ai" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
-            <span class="text-lg">🤖</span>
-            <span class="text-xs mt-1 font-bold">زكي الذكي</span>
+        <button onclick="switchTab('leaderboard')" id="btn-leaderboard" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
+            <span class="text-base">🏆</span>
+            <span class="text-[10px] mt-1 font-bold">المصدرين</span>
         </button>
         <button onclick="switchTab('profile')" id="btn-profile" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
-            <span class="text-lg">👤</span>
-            <span class="text-xs mt-1 font-bold">حسابي</span>
+            <span class="text-base">👤</span>
+            <span class="text-[10px] mt-1 font-bold">حسابي</span>
         </button>
     </nav>
 
     <!-- JavaScript Logic -->
     <script>
-        // Library Data
-        const libraryItems = [
-            { title: "ملخص التاريخ في 10 صفحات - الوحدة الأولى", subject: "التاريخ المصري", type: "مذكرة PDF", rating: "4.9 ⭐" },
-            { title: "قواعد النحو العربي ببساطة - الثانوية العامة", subject: "اللغة العربية", type: "شرح وتدريبات", rating: "5.0 ⭐" },
-            { title: "مراجعة عقرى لغة إنجليزية Unit 1+2", subject: "اللغة الإنجليزية", type: "مراجعة نهائية", rating: "4.8 ⭐" },
-            { title: "أساسيات البرمجة والذكاء الاصطناعي", subject: "البرمجة", type: "كورس تفاعلي", rating: "5.0 ⭐" },
-            { title: "مذكرات الثقافة المالية وإدارة الأموال", subject: "الثقافة المالية", type: "كتاب مبسط", rating: "4.7 ⭐" }
+        let libraryItems = JSON.parse(localStorage.getItem('mishwar_library')) || [];
+
+        const dailyTips = [
+            "ابدأ يومك الدراسي بالمواد الصعبة وأنت بكامل طاقتك الذهنية والتركيز.",
+            "الاستمرارية في المذاكرة لمدة ساعة يومياً أفضل بكثير من المذاكرة لـ 10 ساعات متواصلة مرة في الأسبوع.",
+            "قم بحل الكثير من التدريبات والأسئلة بعد الانتهاء من كل درس لتثبيت المعلومات في ذهنك.",
+            "احرص على أخذ قسط كافٍ من النوم لتعمل الذاكرة بكفاءة استيعاب قصوى.",
+            "راجع ملخصاتك ودوّن ملاحظاتك بخط يدك لترسيخ القواعد الصعبة."
         ];
 
-        // Tasks Data
-        let tasks = JSON.parse(localStorage.getItem('mishwar_tasks')) || [
-            { text: "مذاكرة وحدة النحو في اللغة العربية", done: false },
-            { text: "حل اختبار تدريبي في التاريخ المصري", done: true },
-            { text: "مراجعة كلمات اللغة الإنجليزية", done: false }
+        const leaderboardData = [
+            { rank: "🥇 1", name: "أحمد إبراهيم", track: "مسار الهندسة وعلوم الحاسب", compliance: "98%", score: "99.5% (امتياز)" },
+            { rank: "🥈 2", name: "محمود رمضان", track: "مسار الطب وعلوم الحياة", compliance: "95%", score: "97.8% (امتياز)" },
+            { rank: "🥉 3", name: "يوسف عزت", track: "مسار إدارة الأعمال", compliance: "92%", score: "95.2% (جيد جداً)" },
+            { rank: "4", name: "فاطمة محمد", track: "مسار الآداب والفنون", compliance: "90%", score: "94.0% (جيد جداً)" },
+            { rank: "5", name: "عبدالرحمن ياسر", track: "مسار الهندسة وعلوم الحاسب", compliance: "88%", score: "91.5% (جيد جداً)" }
         ];
+
+        let tasks = JSON.parse(localStorage.getItem('mishwar_tasks')) || [
+            { text: "مذاكرة دروس المسار اليومية", done: false },
+            { text: "الاطلاع على نصيحة اليوم", done: true }
+        ];
+
+        function initApp() {
+            const dayIndex = new Date().getDate() % dailyTips.length;
+            const tipEl = document.getElementById('dailyTipText');
+            if(tipEl) tipEl.innerText = dailyTips[dayIndex];
+
+            renderTipsList();
+            renderLeaderboard();
+            renderLibrary();
+            renderTasks();
+        }
+
+        function renderTipsList() {
+            const container = document.getElementById('tipsContainer');
+            if(!container) return;
+            container.innerHTML = "";
+            dailyTips.forEach((tip, idx) => {
+                container.innerHTML += `
+                    <div class="card-bg p-4 rounded-xl border border-gray-800 flex items-start gap-3">
+                        <span class="w-7 h-7 rounded-full gold-gradient text-black flex items-center justify-center font-bold text-xs flex-shrink-0">${idx + 1}</span>
+                        <p class="text-sm text-gray-200 leading-relaxed">${tip}</p>
+                    </div>
+                `;
+            });
+        }
+
+        function renderLeaderboard() {
+            const tbody = document.getElementById('leaderboardTableBody');
+            if(!tbody) return;
+            tbody.innerHTML = "";
+            leaderboardData.forEach(row => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-gray-900/40 transition">
+                        <td class="py-3 px-4 font-bold text-amber-400">${row.rank}</td>
+                        <td class="py-3 px-4 font-medium text-gray-200">${row.name}</td>
+                        <td class="py-3 px-4 text-xs text-gray-400">${row.track}</td>
+                        <td class="py-3 px-4 text-emerald-400 font-bold">${row.compliance}</td>
+                        <td class="py-3 px-4 text-amber-200">${row.score}</td>
+                    </tr>
+                `;
+            });
+        }
 
         function renderLibrary(filter = "") {
             const grid = document.getElementById('libraryGrid');
+            if(!grid) return;
+            if(filter) {
+                const searchInput = document.getElementById('searchBox');
+                if(searchInput) searchInput.value = filter;
+            }
+            const query = document.getElementById('searchBox') ? document.getElementById('searchBox').value.toLowerCase() : "";
             grid.innerHTML = "";
-            const filtered = libraryItems.filter(i => i.title.includes(filter) || i.subject.includes(filter));
             
+            const filtered = libraryItems.filter(i => i.title.toLowerCase().includes(query) || i.subject.toLowerCase().includes(query) || i.type.toLowerCase().includes(query));
+            
+            if(filtered.length === 0) {
+                grid.innerHTML = `<p class="text-gray-400 col-span-full text-center py-12">المكتبة فارغة حالياً. لا توجد مذكرات مرفوعة سوى التي تقوم أنت بإضافتها عبر لوحة التحكم الخاصة بك.</p>`;
+                return;
+            }
+
             filtered.forEach(item => {
                 grid.innerHTML += `
                     <div class="card-bg p-5 rounded-2xl flex flex-col justify-between space-y-3">
@@ -216,7 +345,7 @@
                         </div>
                         <div class="flex justify-between items-center pt-3 border-t border-gray-800">
                             <span class="text-xs text-amber-400 font-bold">${item.rating}</span>
-                            <button onclick="alert('جاري تحميل المذكرة مجاناً...')" class="gold-gradient text-black font-bold px-4 py-1.5 rounded-lg text-xs">تحميل / تصفح</button>
+                            <a href="${item.link}" target="_blank" class="gold-gradient text-black font-bold px-4 py-1.5 rounded-lg text-xs">تحميل PDF</a>
                         </div>
                     </div>
                 `;
@@ -224,12 +353,43 @@
         }
 
         function filterLibrary() {
-            const query = document.getElementById('searchBox').value;
-            renderLibrary(query);
+            renderLibrary();
+        }
+
+        function openAdminDashboard() {
+            const pass = prompt("أدخل كلمة مرور المشرف الحصرية (moustafa314):");
+            if (pass !== "moustafa314") {
+                alert("كلمة المرور غير صحيحة! الدخول مخصص للمطور مصطفى ياسر فقط.");
+                return;
+            }
+
+            const title = prompt("أدخل عنوان المذكرة أو الكتاب الجديد:");
+            if (!title) return;
+            const subject = prompt("اختر المسار (مسار الهندسة وعلوم الحاسب / مسار الطب وعلوم الحياة / مسار الآداب والفنون / مسار إدارة الأعمال):");
+            const type = prompt("أدخل اسم المادة (مثلاً: مادة البرمجة، مادة الكيمياء، إلخ):");
+            const link = prompt("أدخل رابط ملف الـ PDF المباشر:");
+
+            if (title && subject && link) {
+                libraryItems.push({
+                    id: Date.now(),
+                    title: title,
+                    subject: subject,
+                    type: type || "مذكرة PDF",
+                    rating: "5.0 ⭐",
+                    link: link
+                });
+                localStorage.setItem('mishwar_library', JSON.stringify(libraryItems));
+                switchTab('library');
+                renderLibrary();
+                alert("تم رفع وإضافة ملف الـ PDF بنجاح إلى المكتبة!");
+            } else {
+                alert("تم إلغاء العملية أو نقصت بعض البيانات.");
+            }
         }
 
         function renderTasks() {
             const list = document.getElementById('tasksList');
+            if(!list) return;
             list.innerHTML = "";
             tasks.forEach((task, index) => {
                 list.innerHTML += `
@@ -245,7 +405,7 @@
         }
 
         function toggleTask(index) {
-            tasks[index].done = !tasks[index].done;
+            tasks.[index].done = !tasks[index].done;
             localStorage.setItem('mishwar_tasks', JSON.stringify(tasks));
             renderTasks();
         }
@@ -265,48 +425,27 @@
             renderTasks();
         }
 
-        function sendAIMessage() {
-            const input = document.getElementById('chatInput');
-            const messages = document.getElementById('chatMessages');
-            if (!input.value.trim()) return;
-
-            const userText = input.value;
-            messages.innerHTML += `<div class="bg-gray-800 p-3 rounded-xl max-w-[80%] mr-auto text-gray-200">${userText}</div>`;
-            input.value = "";
-
-            setTimeout(() => {
-                let aiReply = "أهلاً بك يا بطل! سؤال ممتاز. جاري تحضير الإجابة النموذجية لك بناءً على مناهج الثانوية العامة...";
-                if (userText.includes("تاريخ")) {
-                    aiReply = "في التاريخ المصري، التركيز الأساسي يكون على تواريخ الحملة الفرنسية، بناء الدولة الحديثة في عهد محمد علي، وثورة 1919.";
-                } else if (userText.includes("عربي") || userText.includes("نحو")) {
-                    aiReply = "في النحو، ركز جيداً على الممنوع من الصرف، الإعراب التقديري، والمشتقات (اسم الفاعل، اسم المفعول، صيغ المبالغة).";
-                }
-                messages.innerHTML += `<div class="bg-blue-600/10 border border-blue-500/20 p-3 rounded-xl max-w-[80%]">${aiReply}</div>`;
-                messages.scrollTop = messages.scrollHeight;
-            }, 1000);
-        }
-
         function switchTab(tabId) {
-            ['home', 'library', 'tasks', 'ai', 'profile'].forEach(t => {
-                document.getElementById(`tab-${t}`).classList.add('hidden');
-                document.getElementById(`btn-${t}`).classList.remove('text-amber-400');
-                document.getElementById(`btn-${t}`).classList.add('text-gray-400');
+            ['home', 'tracks', 'library', 'tips', 'leaderboard', 'tasks', 'profile'].forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`btn-${t}`);
+                if(el) el.classList.add('hidden');
+                if(btn) {
+                    btn.classList.remove('text-amber-400');
+                    btn.classList.add('text-gray-400');
+                }
             });
-            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-            document.getElementById(`btn-${tabId}`).classList.remove('text-gray-400');
-            document.getElementById(`btn-${tabId}`).classList.add('text-amber-400');
+            const targetTab = document.getElementById(`tab-${tabId}`);
+            const targetBtn = document.getElementById(`btn-${tabId}`);
+            if(targetTab) targetTab.classList.remove('hidden');
+            if(targetBtn) {
+                targetBtn.classList.remove('text-gray-400');
+                targetBtn.classList.add('text-amber-400');
+            }
             window.scrollTo(0,0);
         }
 
-        function openSubject(subjectName) {
-            switchTab('library');
-            document.getElementById('searchBox').value = subjectName;
-            filterLibrary();
-        }
-
-        // Initialize
-        renderLibrary();
-        renderTasks();
+        initApp();
     </script>
 </body>
 </html>
