@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مِشوار الثانوية | المنصة التعليمية المتكاملة</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
+        .gold-gradient { background: linear-gradient(135deg, #d4af37 0%, #aa771c 100%); }
+        .gold-text { background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-bg { background: #131c2e; border: 1px solid rgba(212, 175, 55, 0.15); }
+        .card-bg:hover { border-color: rgba(212, 175, 55, 0.4); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between pb-20">
+
+    <!-- Header -->
+    <header class="card-bg p-4 sticky top-0 z-50 shadow-lg flex justify-between items-center backdrop-blur-md bg-opacity-90">
+        <div class="flex items-center space-x-3 space-x-reverse">
+            <div class="w-10 h-10 rounded-full gold-gradient flex items-center justify-center font-black text-black text-lg shadow">مش</div>
+            <div>
+                <h1 class="font-black text-lg gold-text">مِشوار الثانوية</h1>
+                <p class="text-xs text-gray-400">بواسطة: Moustafa Yasser</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2 space-x-reverse">
+            <span class="bg-amber-500/10 text-amber-400 text-xs px-3 py-1 rounded-full border border-amber-500/30">مجاني بالكامل 🚀</span>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-6 max-w-4xl flex-grow">
+
+        <!-- Home Tab -->
+        <section id="tab-home" class="space-y-6">
+            <!-- Welcome Banner -->
+            <div class="card-bg p-6 rounded-2xl relative overflow-hidden shadow-xl">
+                <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl"></div>
+                <h2 class="text-2xl font-black mb-2">أهلاً بك يا بطل في <span class="gold-text">مِشوار الثانوية</span> 👋</h2>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. كل ما تحتاجه من مذكرات، كتب، اختبارات، وجداول تنظيمية في مكان واحد.</p>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="switchTab('library')" class="gold-gradient text-black font-bold px-5 py-2.5 rounded-xl shadow hover:opacity-90 transition text-sm">استكشف المذكرات والكتب</button>
+                    <button onclick="switchTab('ai')" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-blue-600/30 transition text-sm">اسأل زكي (الذكاء الاصطناعي)</button>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="card-bg p-4 rounded-xl text-center">
+                    <span class="text-2xl font-black gold-text">100%</span>
+                    <p class="text-xs text-gray-400 mt-1">محتوى مجاني</p>
+                </div>
+                <div class="card-bg p-4 rounded-xl text-center">
+                    <span class="text-2xl font-black text-blue-400">5+</span>
+                    <p class="text-xs text-gray-400 mt-1">مواد دراسية أساسية</p>
+                </div>
+                <div class="card-bg p-4 rounded-xl text-center">
+                    <span class="text-2xl font-black text-emerald-400">24/7</span>
+                    <p class="text-xs text-gray-400 mt-1">مساعد ذكي متاح</p>
+                </div>
+                <div class="card-bg p-4 rounded-xl text-center">
+                    <span class="text-2xl font-black text-purple-400">الكل</span>
+                    <p class="text-xs text-gray-400 mt-1">مذكرات وملخصات</p>
+                </div>
+            </div>
+
+            <!-- Subjects Grid -->
+            <div>
+                <h3 class="text-lg font-bold mb-4 flex items-center justify-between">
+                    <span>📚 المواد الدراسية</span>
+                    <span class="text-xs text-amber-400 cursor-pointer" onclick="switchTab('library')">عرض الكل ←</span>
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="card-bg p-5 rounded-2xl cursor-pointer hover:scale-[1.02] transition" onclick="openSubject('اللغة العربية')">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center text-amber-400 font-bold mb-3 text-xl">ض</div>
+                        <h4 class="font-bold text-lg mb-1">اللغة العربية</h4>
+                        <p class="text-xs text-gray-400">النحو، النصوص، البلاغة، والأدب</p>
+                    </div>
+                    <div class="card-bg p-5 rounded-2xl cursor-pointer hover:scale-[1.02] transition" onclick="openSubject('التاريخ المصري')">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold mb-3 text-xl">📜</div>
+                        <h4 class="font-bold text-lg mb-1">التاريخ المصري</h4>
+                        <p class="text-xs text-gray-400">ملخصات التاريخ في 10 صفحات</p>
+                    </div>
+                    <div class="card-bg p-5 rounded-2xl cursor-pointer hover:scale-[1.02] transition" onclick="openSubject('اللغة الإنجليزية')">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-bold mb-3 text-xl">Eng</div>
+                        <h4 class="font-bold text-lg mb-1">اللغة الإنجليزية</h4>
+                        <p class="text-xs text-gray-400">Grammar, Vocab & Skills</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Library Tab (Books & Summaries) -->
+        <section id="tab-library" class="hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-black gold-text">📖 المكتبة الشاملة (كتب ومذكرات)</h2>
+                <input type="text" id="searchBox" placeholder="ابحث عن مذكرة أو كتاب..." onkeyup="filterLibrary()" class="card-bg px-4 py-2 rounded-xl text-sm focus:outline-none focus:border-amber-500 w-1/2">
+            </div>
+
+            <div id="libraryGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Items populated by JS -->
+            </div>
+        </section>
+
+        <!-- Tasks Tab (Planner) -->
+        <section id="tab-tasks" class="hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-black gold-text">📅 خطة اليوم ومهام المذاكرة</h2>
+                <button onclick="openAddTaskModal()" class="gold-gradient text-black font-bold px-4 py-2 rounded-xl text-sm">+ إضافة مهمة جديدة</button>
+            </div>
+
+            <div class="card-bg p-6 rounded-2xl">
+                <div id="tasksList" class="space-y-3">
+                    <!-- Tasks items -->
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant Tab ("Zaki") -->
+        <section id="tab-ai" class="hidden space-y-6">
+            <div class="card-bg p-6 rounded-2xl flex flex-col h-[70vh]">
+                <div class="flex items-center space-x-3 space-x-reverse border-b border-gray-800 pb-4 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-400 font-bold">🤖</div>
+                    <div>
+                        <h3 class="font-bold">زكي - مساعدك الدراسي بالذكاء الاصطناعي</h3>
+                        <p class="text-xs text-gray-400">اسأل في أي حاجة في المنهج وسأقوم بمساعدتك فوراً مجاناً</p>
+                    </div>
+                </div>
+                
+                <div id="chatMessages" class="flex-grow overflow-y-auto space-y-3 pr-2 text-sm">
+                    <div class="bg-blue-600/10 border border-blue-500/20 p-3 rounded-xl max-w-[80%]">
+                        أهلاً يا مصطفى! أنا زكي مساعدك الذكي. اطرح علي أي سؤال في المواد الدراسية أو في البرمجة وسأقوم بحله لك فوراً!
+                    </div>
+                </div>
+
+                <div class="mt-4 flex gap-2 pt-2 border-t border-gray-800">
+                    <input type="text" id="chatInput" placeholder="اكتب سؤالك هنا..." class="card-bg flex-grow px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-blue-500" onkeypress="if(event.key === 'Enter') sendAIMessage()">
+                    <button onclick="sendAIMessage()" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-blue-500 transition">إرسال</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Tab -->
+        <section id="tab-profile" class="hidden space-y-6">
+            <div class="card-bg p-6 rounded-2xl text-center space-y-4">
+                <div class="w-20 h-20 rounded-full gold-gradient mx-auto flex items-center justify-center text-black text-3xl font-black shadow-lg">MY</div>
+                <div>
+                    <h3 class="text-xl font-bold">مصطفى ياسر</h3>
+                    <p class="text-xs text-gray-400 mt-1">مطور تطبيق مِشوار الثانوية • طالب بالثانوية العامة</p>
+                </div>
+                <div class="pt-4 border-t border-gray-800 flex justify-center gap-4">
+                    <a href="https://t.me/mostafa0o0o0" target="_blank" class="bg-blue-500/20 text-blue-400 border border-blue-500/30 px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-blue-500/30 transition">تواصل عبر تليجرام (mostafa0o0o0)</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="card-bg fixed bottom-0 left-0 right-0 py-3 px-6 flex justify-around items-center border-t border-gray-800 z-50">
+        <button onclick="switchTab('home')" id="btn-home" class="flex flex-col items-center text-amber-400 transition">
+            <span class="text-lg">🏠</span>
+            <span class="text-xs mt-1 font-bold">الرئيسية</span>
+        </button>
+        <button onclick="switchTab('library')" id="btn-library" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
+            <span class="text-lg">📚</span>
+            <span class="text-xs mt-1 font-bold">المكتبة</span>
+        </button>
+        <button onclick="switchTab('tasks')" id="btn-tasks" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
+            <span class="text-lg">📅</span>
+            <span class="text-xs mt-1 font-bold">المهام</span>
+        </button>
+        <button onclick="switchTab('ai')" id="btn-ai" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
+            <span class="text-lg">🤖</span>
+            <span class="text-xs mt-1 font-bold">زكي الذكي</span>
+        </button>
+        <button onclick="switchTab('profile')" id="btn-profile" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition">
+            <span class="text-lg">👤</span>
+            <span class="text-xs mt-1 font-bold">حسابي</span>
+        </button>
+    </nav>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Library Data
+        const libraryItems = [
+            { title: "ملخص التاريخ في 10 صفحات - الوحدة الأولى", subject: "التاريخ المصري", type: "مذكرة PDF", rating: "4.9 ⭐" },
+            { title: "قواعد النحو العربي ببساطة - الثانوية العامة", subject: "اللغة العربية", type: "شرح وتدريبات", rating: "5.0 ⭐" },
+            { title: "مراجعة عقرى لغة إنجليزية Unit 1+2", subject: "اللغة الإنجليزية", type: "مراجعة نهائية", rating: "4.8 ⭐" },
+            { title: "أساسيات البرمجة والذكاء الاصطناعي", subject: "البرمجة", type: "كورس تفاعلي", rating: "5.0 ⭐" },
+            { title: "مذكرات الثقافة المالية وإدارة الأموال", subject: "الثقافة المالية", type: "كتاب مبسط", rating: "4.7 ⭐" }
+        ];
+
+        // Tasks Data
+        let tasks = JSON.parse(localStorage.getItem('mishwar_tasks')) || [
+            { text: "مذاكرة وحدة النحو في اللغة العربية", done: false },
+            { text: "حل اختبار تدريبي في التاريخ المصري", done: true },
+            { text: "مراجعة كلمات اللغة الإنجليزية", done: false }
+        ];
+
+        function renderLibrary(filter = "") {
+            const grid = document.getElementById('libraryGrid');
+            grid.innerHTML = "";
+            const filtered = libraryItems.filter(i => i.title.includes(filter) || i.subject.includes(filter));
+            
+            filtered.forEach(item => {
+                grid.innerHTML += `
+                    <div class="card-bg p-5 rounded-2xl flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-md border border-amber-500/20">${item.subject}</span>
+                            <h4 class="font-bold mt-2 text-base">${item.title}</h4>
+                            <p class="text-xs text-gray-400 mt-1">النوع: ${item.type}</p>
+                        </div>
+                        <div class="flex justify-between items-center pt-3 border-t border-gray-800">
+                            <span class="text-xs text-amber-400 font-bold">${item.rating}</span>
+                            <button onclick="alert('جاري تحميل المذكرة مجاناً...')" class="gold-gradient text-black font-bold px-4 py-1.5 rounded-lg text-xs">تحميل / تصفح</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterLibrary() {
+            const query = document.getElementById('searchBox').value;
+            renderLibrary(query);
+        }
+
+        function renderTasks() {
+            const list = document.getElementById('tasksList');
+            list.innerHTML = "";
+            tasks.forEach((task, index) => {
+                list.innerHTML += `
+                    <div class="flex items-center justify-between p-3 rounded-xl bg-gray-900/50 border border-gray-800">
+                        <label class="flex items-center space-x-3 space-x-reverse cursor-pointer">
+                            <input type="checkbox" ${task.done ? 'checked' : ''} onchange="toggleTask(${index})" class="w-4 h-4 accent-amber-500 rounded">
+                            <span class="text-sm ${task.done ? 'line-through text-gray-500' : 'text-gray-200'}">${task.text}</span>
+                        </label>
+                        <button onclick="deleteTask(${index})" class="text-red-400 text-xs px-2 py-1 hover:bg-red-500/10 rounded">حذف</button>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleTask(index) {
+            tasks[index].done = !tasks[index].done;
+            localStorage.setItem('mishwar_tasks', JSON.stringify(tasks));
+            renderTasks();
+        }
+
+        function openAddTaskModal() {
+            const text = prompt("أدخل مهمة المذاكرة الجديدة:");
+            if (text) {
+                tasks.push({ text, done: false });
+                localStorage.setItem('mishwar_tasks', JSON.stringify(tasks));
+                renderTasks();
+            }
+        }
+
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            localStorage.setItem('mishwar_tasks', JSON.stringify(tasks));
+            renderTasks();
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            if (!input.value.trim()) return;
+
+            const userText = input.value;
+            messages.innerHTML += `<div class="bg-gray-800 p-3 rounded-xl max-w-[80%] mr-auto text-gray-200">${userText}</div>`;
+            input.value = "";
+
+            setTimeout(() => {
+                let aiReply = "أهلاً بك يا بطل! سؤال ممتاز. جاري تحضير الإجابة النموذجية لك بناءً على مناهج الثانوية العامة...";
+                if (userText.includes("تاريخ")) {
+                    aiReply = "في التاريخ المصري، التركيز الأساسي يكون على تواريخ الحملة الفرنسية، بناء الدولة الحديثة في عهد محمد علي، وثورة 1919.";
+                } else if (userText.includes("عربي") || userText.includes("نحو")) {
+                    aiReply = "في النحو، ركز جيداً على الممنوع من الصرف، الإعراب التقديري، والمشتقات (اسم الفاعل، اسم المفعول، صيغ المبالغة).";
+                }
+                messages.innerHTML += `<div class="bg-blue-600/10 border border-blue-500/20 p-3 rounded-xl max-w-[80%]">${aiReply}</div>`;
+                messages.scrollTop = messages.scrollHeight;
+            }, 1000);
+        }
+
+        function switchTab(tabId) {
+            ['home', 'library', 'tasks', 'ai', 'profile'].forEach(t => {
+                document.getElementById(`tab-${t}`).classList.add('hidden');
+                document.getElementById(`btn-${t}`).classList.remove('text-amber-400');
+                document.getElementById(`btn-${t}`).classList.add('text-gray-400');
+            });
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            document.getElementById(`btn-${tabId}`).classList.remove('text-gray-400');
+            document.getElementById(`btn-${tabId}`).classList.add('text-amber-400');
+            window.scrollTo(0,0);
+        }
+
+        function openSubject(subjectName) {
+            switchTab('library');
+            document.getElementById('searchBox').value = subjectName;
+            filterLibrary();
+        }
+
+        // Initialize
+        renderLibrary();
+        renderTasks();
+    </script>
+</body>
+</html>
