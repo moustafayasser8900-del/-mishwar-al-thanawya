@@ -24,7 +24,7 @@
             <img src="شعار مشوار الثانوية الذهبي.png" alt="شعار مشوار الثانوية" class="w-10 h-10 rounded-full object-cover border border-amber-500/40 shadow-md">
             <div>
                 <h1 class="font-black text-lg gold-text">مِشوار الثانوية</h1>
-                <p class="text-xs text-gray-400">بواسطة: Moustafa Yasser</p>
+                <p class="text-xs text-gray-400">بواسطة: مصطفى ياسر</p>
             </div>
         </div>
         <div class="flex items-center space-x-2 space-x-reverse">
@@ -44,7 +44,7 @@
                 
                 <div class="relative z-10">
                     <h2 class="text-2xl font-black mb-2">أهلاً بك يا بطل في <span class="gold-text">مِشوار الثانوية</span> 👋</h2>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. استعرض المسارات، جدول المذاكرة، واختبارات الذكاء الاصطناعي من مذكراتك.</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. استعرض المسارات، جدول المذاكرة، ومذكرات جوجل شيت المتحدثة تلقائياً.</p>
                     <div class="flex flex-wrap gap-3">
                         <button onclick="switchTab('tracks')" class="gold-gradient text-black font-bold px-5 py-2.5 rounded-xl shadow hover:opacity-90 transition text-sm">المسارات والمواد</button>
                         <button onclick="switchTab('ai-exams')" class="bg-purple-600/25 text-purple-300 border border-purple-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-purple-600/35 transition text-sm">🤖 اختبارات الذكاء الاصطناعي</button>
@@ -72,15 +72,8 @@
                     <div class="flex gap-2 flex-wrap">
                         <button onclick="openSubjectPage('مادة البرمجة')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">💻 مادة البرمجة</button>
                         <button onclick="openSubjectPage('مادة الكيمياء')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">🧪 مادة الكيمياء</button>
-                    </div>
-                </div>
-
-                <div class="card-bg p-5 rounded-2xl space-y-3">
-                    <div class="flex items-center justify-between"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">مسار علمي</span><span class="text-lg">🧬</span></div>
-                    <h3 class="font-bold text-lg text-amber-300">مسار الطب وعلوم الحياة</h3>
-                    <div class="flex gap-2 flex-wrap">
-                        <button onclick="openSubjectPage('مادة الرياضيات')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">📐 مادة الرياضيات</button>
                         <button onclick="openSubjectPage('مادة الفيزياء')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">⚡ مادة الفيزياء</button>
+                        <button onclick="openSubjectPage('مادة الرياضيات')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">📐 مادة الرياضيات</button>
                     </div>
                 </div>
 
@@ -134,7 +127,7 @@
             <div class="card-bg p-6 rounded-2xl space-y-4">
                 <div class="border-b border-gray-800 pb-4">
                     <h2 class="text-xl font-black gold-text">🤖 الاختبارات الذكية بالذكاء الاصطناعي</h2>
-                    <p class="text-xs text-gray-400 mt-1">يقوم النظام بتوليد الأسئلة تلقائياً بناءً على محتوى مذكرات وكتب الـ PDF المضافة من الهاتف.</p>
+                    <p class="text-xs text-gray-400 mt-1">يقوم النظام بتوليد الأسئلة تلقائياً بناءً على محتوى مذكرات وكتب الـ PDF المضافة.</p>
                 </div>
 
                 <div class="space-y-3">
@@ -152,7 +145,7 @@
                         <option value="مادة إدارة الأعمال">مادة إدارة الأعمال</option>
                         <option value="مادة المحاسبة">مادة المحاسبة</option>
                     </select>
-                    <button onclick="generateAIExam()" class="w-full gold-gradient text-black font-bold py-3 rounded-xl shadow hover:opacity-90 transition text-sm">توليد اختبار ذكي من مذكرات المادة ⚡</button>
+                    <button onclick="generateAIExam()" class="w-full gold-gradient text-black font-bold py-3 rounded-xl shadow hover:opacity-90 transition text-sm">توليد اختبار ذكي ⚡</button>
                 </div>
 
                 <div id="aiExamContainer" class="mt-4 p-4 rounded-xl bg-gray-900/80 border border-gray-800 hidden"></div>
@@ -173,16 +166,18 @@
             </div>
         </section>
 
-        <!-- Subject View Page -->
+        <!-- Subject View Page (Google Sheets Dynamic Data Integration) -->
         <section id="tab-subject-view" class="hidden space-y-6">
             <div class="flex justify-between items-center border-b border-gray-800 pb-4">
                 <div>
                     <button onclick="goBackFromSubject()" class="text-xs text-amber-400 mb-1 hover:underline">← العودة</button>
                     <h2 id="currentSubjectTitle" class="text-2xl font-black gold-text">عنوان المادة</h2>
                 </div>
-                <button onclick="promptUploadPDF()" class="gold-gradient text-black text-xs font-bold px-4 py-2 rounded-xl shadow hover:opacity-90">➕ اختر ملف PDF من الهاتف</button>
             </div>
-            <div id="subjectPdfList" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+            <!-- Dynamic Notes Container fetched directly from Google Sheets CSV -->
+            <div id="notes-container" class="space-y-3">
+                <p style="color:#d4af37; text-align:center;">جاري تحميل المذكرات...</p>
+            </div>
         </section>
 
         <!-- Tips Tab -->
@@ -235,30 +230,6 @@
 
     </main>
 
-    <!-- Hidden File Input for Phone PDF Picker -->
-    <input type="file" id="phonePdfInput" accept="application/pdf" class="hidden" onchange="handlePhonePDFUpload(event)">
-
-    <!-- Custom Modal for Secure Developer Upload -->
-    <div id="uploadModal" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center hidden p-4">
-        <div class="card-bg p-6 rounded-2xl max-w-md w-full space-y-4 border border-amber-500/40">
-            <h3 class="text-lg font-bold gold-text">🔐 لوحة تحكم المطور (رفع ملف PDF)</h3>
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs text-gray-300 mb-1">كلمة مرور المطور:</label>
-                    <input type="password" id="devPasswordInput" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="أدخل كلمة المرور">
-                </div>
-                <div>
-                    <label class="block text-xs text-gray-300 mb-1">عنوان المذكرة أو الكتاب:</label>
-                    <input type="text" id="pdfTitleInput" class="w-full bg-gray-900 border border-gray-700 rounded-xl p-2.5 text-sm text-white focus:outline-none focus:border-amber-500" placeholder="مثال: مذكرة النحو الشاملة">
-                </div>
-            </div>
-            <div class="flex justify-end space-x-2 space-x-reverse pt-2">
-                <button onclick="closeUploadModal()" class="bg-gray-800 text-gray-300 px-4 py-2 rounded-xl text-xs font-bold">إلغاء</button>
-                <button onclick="confirmAndPickFile()" class="gold-gradient text-black px-4 py-2 rounded-xl text-xs font-bold">متابعة لاختيار الملف من الهاتف 📱</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Bottom Navigation Bar -->
     <nav class="card-bg fixed bottom-0 left-0 right-0 py-3 px-2 flex justify-around items-center border-t border-gray-800 z-50">
         <button onclick="switchTab('home')" id="btn-home" class="flex flex-col items-center text-amber-400 transition"><span class="text-base">🏠</span><span class="text-[9px] mt-1 font-bold">الرئيسية</span></button>
@@ -270,9 +241,10 @@
         <button onclick="switchTab('profile')" id="btn-profile" class="flex flex-col items-center text-gray-400 hover:text-amber-400 transition"><span class="text-base">👤</span><span class="text-[9px] mt-1 font-bold">حسابي</span></button>
     </nav>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Logic & Google Sheets Integration -->
     <script>
-        let pdfDatabase = JSON.parse(localStorage.getItem('mishwar_pdf_db')) || {};
+        const sheetCSVUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQR4kLZRgsmkUkHVhXIydrpYAMfwvMKDlaTPg_5wIao4guDj_JiCnuUhKfZptK0_zg_Lf-LJSqQQHl4/pub?output=csv";
+        
         let scheduleData = JSON.parse(localStorage.getItem('mishwar_schedule')) || [
             { day: "السبت", time: "04:00 عصراً", subject: "اللغة العربية - النحو" },
             { day: "الأحد", time: "05:00 عصراً", subject: "التاريخ الوطني - الوحدة الأولى" }
@@ -310,7 +282,7 @@
             previousTab = document.querySelector('section:not(.hidden)').id.replace('tab-', '');
             activeSubject = subjectName;
             document.getElementById('currentSubjectTitle').innerText = subjectName;
-            renderSubjectPDFs();
+            loadNotesFromGoogleSheet(subjectName);
             switchTab('subject-view');
         }
 
@@ -318,105 +290,58 @@
             switchTab(previousTab || 'tracks');
         }
 
-        function renderSubjectPDFs() {
-            const list = document.getElementById('subjectPdfList');
-            list.innerHTML = "";
-            const items = pdfDatabase[activeSubject] || [];
+        // دالة جلب وعرض المذكرات تلقائياً من Google Sheets للمادة المحددة
+        async function loadNotesFromGoogleSheet(targetSubject) {
+            const container = document.getElementById("notes-container");
+            if (!container) return;
 
-            if(items.length === 0) {
-                list.innerHTML = `
-                    <div class="col-span-full text-center py-12 card-bg rounded-2xl">
-                        <p class="text-gray-400 text-sm">لا توجد مذكرات أو ملفات PDF مرفوعة في مادة (${activeSubject}) حتى الآن.</p>
-                        <p class="text-xs text-amber-400 mt-2">اضغط على زر (اختر ملف PDF من الهاتف) وأدخل كلمة السر للرفع.</p>
-                    </div>
-                `;
-                return;
-            }
+            container.innerHTML = "<p style='color:#d4af37; text-align:center;'>جاري تحميل مذكرات (" + targetSubject + ") من المنصة...</p>";
 
-            items.forEach((item, index) => {
-                list.innerHTML += `
-                    <div class="card-bg p-5 rounded-2xl flex flex-col justify-between space-y-3">
-                        <div>
-                            <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-md border border-amber-500/20">مذكرة هاتفك</span>
-                            <h4 class="font-bold mt-2 text-base text-gray-100">${item.title}</h4>
-                            <p class="text-xs text-gray-400 mt-1">تاريخ الإضافة: ${item.date}</p>
-                        </div>
-                        <div class="flex justify-between items-center pt-3 border-t border-gray-800">
-                            <div class="flex gap-2">
-                                <a href="${item.link}" target="_blank" class="gold-gradient text-black font-bold px-3 py-1.5 rounded-lg text-xs hover:opacity-90">عرض PDF 📄</a>
-                                <button onclick="deletePDFItem('${activeSubject}', ${index})" class="bg-red-500/20 text-red-400 px-2.5 py-1.5 rounded-lg text-xs hover:bg-red-500/30">حذف</button>
-                            </div>
-                            <span class="text-xs text-amber-400 font-bold">5.0 ⭐</span>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function promptUploadPDF() {
-            document.getElementById('uploadModal').classList.remove('hidden');
-            document.getElementById('devPasswordInput').value = '';
-            document.getElementById('pdfTitleInput').value = '';
-        }
-
-        function closeUploadModal() {
-            document.getElementById('uploadModal').classList.add('hidden');
-        }
-
-        function confirmAndPickFile() {
-            const pass = document.getElementById('devPasswordInput').value;
-            const title = document.getElementById('pdfTitleInput').value;
-
-            if (pass !== "moustafa314") {
-                alert("كلمة المرور غير صحيحة!");
-                return;
-            }
-            if (!title) {
-                alert("يرجى إدخال عنوان للمذكرة أو الكتاب.");
-                return;
-            }
-
-            closeUploadModal();
-            // Trigger native phone file manager picker for PDF files
-            document.getElementById('phonePdfInput').click();
-        }
-
-        function handlePhonePDFUpload(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const title = document.getElementById('pdfTitleInput').value || file.name;
-            const reader = new FileReader();
-
-            reader.onload = function(e) {
-                const base64Data = e.target.result;
-                if(!pdfDatabase[activeSubject]) pdfDatabase[activeSubject] = [];
+            try {
+                const response = await fetch(sheetCSVUrl + "&t=" + new Date().getTime());
+                const data = await response.text();
                 
-                pdfDatabase[activeSubject].push({
-                    id: Date.now(),
-                    title: title,
-                    link: base64Data,
-                    date: new Date().toLocaleDateString('ar-EG')
+                const rows = data.split(/\r?\n/).slice(1);
+                container.innerHTML = "";
+                let found = false;
+
+                rows.forEach(row => {
+                    if (!row.trim()) return;
+                    const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    const subject = cols[0] ? cols[0].replace(/"/g, '').trim() : '';
+                    const title = cols[1] ? cols[1].replace(/"/g, '').trim() : '';
+                    const fileUrl = cols[2] ? cols[2].replace(/"/g, '').trim() : '';
+                    const date = cols[3] ? cols[3].replace(/"/g, '').trim() : '';
+
+                    if (subject.toLowerCase() === targetSubject.toLowerCase()) {
+                        found = true;
+                        container.innerHTML += `
+                            <div class="card-bg p-5 rounded-2xl flex flex-col justify-between space-y-3 mb-3">
+                                <div>
+                                    <span class="text-xs bg-amber-500/10 text-amber-400 px-2.5 py-1 rounded-md border border-amber-500/20">مذكرة معتمدة 📄</span>
+                                    <h4 class="font-bold mt-2 text-base text-gray-100">${title || 'بدون عنوان'}</h4>
+                                    <p class="text-xs text-gray-400 mt-1">تاريخ الإضافة: ${date || ''}</p>
+                                </div>
+                                <div class="flex justify-between items-center pt-3 border-t border-gray-800">
+                                    <a href="${fileUrl || '#'}" target="_blank" class="gold-gradient text-black font-bold px-4 py-2 rounded-lg text-xs hover:opacity-95">عرض أو تحميل PDF 🔗</a>
+                                    <span class="text-xs text-amber-400 font-bold">مِشوار الثانوية ⭐</span>
+                                </div>
+                            </div>
+                        `;
+                    }
                 });
 
-                localStorage.setItem('mishwar_pdf_db', JSON.stringify(pdfDatabase));
-                renderSubjectPDFs();
-                alert(`تم رفع ملف (${file.name}) بنجاح إلى مادة (${activeSubject}) من هاتفك!`);
-                event.target.value = ''; // Reset input
-            };
-
-            reader.readAsDataURL(file);
-        }
-
-        function deletePDFItem(subject, index) {
-            const pass = prompt("أدخل كلمة المرور لحذف الملف:");
-            if (pass !== "moustafa314") {
-                alert("كلمة المرور غير صحيحة!");
-                return;
+                if (!found) {
+                    container.innerHTML = `
+                        <div class="col-span-full text-center py-12 card-bg rounded-2xl">
+                            <p class="text-gray-400 text-sm">لا توجد مذكرات أو ملفات PDF مرفوعة في (${targetSubject}) حتى الآن.</p>
+                            <p class="text-xs text-amber-400 mt-2">قم بإضافة سطر جديد في ملف Google Sheets وسيظهر هنا فوراً للطلاب!</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                container.innerHTML = "<p style='color:red; text-align:center;'>حدث خطأ في جلب البيانات، تأكد من الاتصال بالإنترنت.</p>";
             }
-            pdfDatabase[subject].splice(index, 1);
-            localStorage.setItem('mishwar_pdf_db', JSON.stringify(pdfDatabase));
-            renderSubjectPDFs();
         }
 
         function generateAIExam() {
@@ -424,24 +349,15 @@
             const container = document.getElementById('aiExamContainer');
             container.classList.remove('hidden');
 
-            const files = pdfDatabase[subject] || [];
-            if(files.length === 0) {
-                container.innerHTML = `
-                    <p class="text-red-400 text-sm font-bold">عذراً، لا توجد ملفات PDF مرفوعة في مادة (${subject}) حالياً!</p>
-                    <p class="text-xs text-gray-400 mt-1">يجب اختيار ورفع ملفات من هاتفك لهذه المادة أولاً لكي يستطيع الذكاء الاصطناعي توليد الأسئلة منها.</p>
-                `;
-                return;
-            }
-
             container.innerHTML = `
                 <h4 class="font-bold text-amber-400 mb-2">🤖 اختبار ذكي لـ (${subject})</h4>
-                <p class="text-xs text-emerald-400 mb-3">تم استخراج الأسئلة بناءً على ملف هاتفك المرفق ("${files[0].title}"):</p>
+                <p class="text-xs text-emerald-400 mb-3">تم استخراج الأسئلة وتوليدها بنجاح لمادة ${subject}:</p>
                 <div class="space-y-4">
                     <div class="p-3 bg-gray-900 rounded-xl border border-gray-800">
-                        <p class="text-sm font-bold text-gray-200 mb-2">سؤال 1: من واقع ملف الـ PDF المضاف من هاتفك، ما هي الفكرة الرئيسية المشروحة؟</p>
+                        <p class="text-sm font-bold text-gray-200 mb-2">سؤال 1: بناءً على المناهج والمذكرات المعتمدة، ما هو التطبيق الأساسي للقواعد المدروسة؟</p>
                         <div class="space-y-1 text-xs">
-                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> أ) الفهم العميق وتطبيق القواعد</label>
-                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> ب) الحفظ السطحي للمحتوى</label>
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> أ) الفهم العميق وتطبيق الأنماط</label>
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> ب) الحفظ العشوائي</label>
                         </div>
                     </div>
                 </div>
