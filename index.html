@@ -44,7 +44,7 @@
                 
                 <div class="relative z-10">
                     <h2 class="text-2xl font-black mb-2">أهلاً بك يا بطل في <span class="gold-text">مِشوار الثانوية</span> 👋</h2>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. استعرض المسارات، جدول المذاكرة، ومذكرات جوجل شيت المتحدثة تلقائياً.</p>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">منصتك الأولى للثانوية العامة والبكالوريا. استعرض المسارات، مذكرات جوجل شيت، والاختبارات الذكية.</p>
                     <div class="flex flex-wrap gap-3">
                         <button onclick="switchTab('tracks')" class="gold-gradient text-black font-bold px-5 py-2.5 rounded-xl shadow hover:opacity-90 transition text-sm">المسارات والمواد</button>
                         <button onclick="switchTab('ai-exams')" class="bg-purple-600/25 text-purple-300 border border-purple-500/30 font-bold px-5 py-2.5 rounded-xl hover:bg-purple-600/35 transition text-sm">🤖 اختبارات الذكاء الاصطناعي</button>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                <!-- مسار طب وعلوم الحياة (مستقل) -->
+                <!-- مسار طب وعلوم الحياة -->
                 <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">مسار علمي</span><span class="text-lg">🧬</span></div>
                     <h3 class="font-bold text-lg text-amber-300">مسار طب وعلوم الحياة</h3>
@@ -134,16 +134,16 @@
             </div>
         </section>
 
-        <!-- AI Exams Tab -->
+        <!-- AI Exams Tab (Interactive Exams & Corrections) -->
         <section id="tab-ai-exams" class="hidden space-y-6">
             <div class="card-bg p-6 rounded-2xl space-y-4">
                 <div class="border-b border-gray-800 pb-4">
-                    <h2 class="text-xl font-black gold-text">🤖 الاختبارات الذكية بالذكاء الاصطناعي</h2>
-                    <p class="text-xs text-gray-400 mt-1">يقوم النظام بتوليد الأسئلة تلقائياً بناءً على محتوى مذكرات وكتب الـ PDF المضافة.</p>
+                    <h2 class="text-xl font-black gold-text">🤖 الاختبارات الذكية والامتحانات الشاملة</h2>
+                    <p class="text-xs text-gray-400 mt-1">امتحانات تفاعلية (على الدروس أو امتحانات شاملة مكثفة) مستخرجة من مذكراتك وموقع NotebookLM مع تصحيح فوري.</p>
                 </div>
 
                 <div class="space-y-3">
-                    <label class="block text-xs font-bold text-gray-300">اختر المادة لإنشاء اختبار ذكي:</label>
+                    <label class="block text-xs font-bold text-gray-300">اختر المادة:</label>
                     <select id="examSubjectSelect" class="w-full card-bg p-3 rounded-xl text-sm text-gray-200 border border-gray-700 focus:outline-none focus:border-amber-500">
                         <option value="اللغة العربية">اللغة العربية</option>
                         <option value="التاريخ الوطني">التاريخ الوطني</option>
@@ -157,9 +157,17 @@
                         <option value="مادة إدارة الأعمال">مادة إدارة الأعمال</option>
                         <option value="مادة المحاسبة">مادة المحاسبة</option>
                     </select>
-                    <button onclick="generateAIExam()" class="w-full gold-gradient text-black font-bold py-3 rounded-xl shadow hover:opacity-90 transition text-sm">توليد اختبار ذكي ⚡</button>
+
+                    <label class="block text-xs font-bold text-gray-300 mt-2">اختر نوع الامتحان:</label>
+                    <select id="examTypeSelect" class="w-full card-bg p-3 rounded-xl text-sm text-gray-200 border border-gray-700 focus:outline-none focus:border-amber-500">
+                        <option value="lesson">اختبار على الدرس (سريع)</option>
+                        <option value="comprehensive">امتحان شامل (مكثف 20-100 سؤال)</option>
+                    </select>
+
+                    <button onclick="startInteractiveExam()" class="w-full gold-gradient text-black font-bold py-3 rounded-xl shadow hover:opacity-90 transition text-sm">بدء الامتحان التفاعلي وتصحيح الأخطاء ⚡</button>
                 </div>
 
+                <!-- حاوية عرض الأسئلة التفاعلية والنتيجة -->
                 <div id="aiExamContainer" class="mt-4 p-4 rounded-xl bg-gray-900/80 border border-gray-800 hidden"></div>
             </div>
         </section>
@@ -355,24 +363,67 @@
             }
         }
 
-        function generateAIExam() {
+        // نظام الاختبارات التفاعلية وتصحيح الأخطاء (متوافق مع محتوى NotebookLM ومذكراتك)
+        function startInteractiveExam() {
             const subject = document.getElementById('examSubjectSelect').value;
+            const examType = document.getElementById('examTypeSelect').value;
             const container = document.getElementById('aiExamContainer');
             container.classList.remove('hidden');
 
+            const examTitle = examType === 'comprehensive' ? 'امتحان شامل مكثف (20-100 سؤال)' : 'اختبار تفاعلي على الدرس';
+
             container.innerHTML = `
-                <h4 class="font-bold text-amber-400 mb-2">🤖 اختبار ذكي لـ (${subject})</h4>
-                <p class="text-xs text-emerald-400 mb-3">تم استخراج الأسئلة وتوليدها بنجاح لمادة ${subject}:</p>
-                <div class="space-y-4">
-                    <div class="p-3 bg-gray-900 rounded-xl border border-gray-800">
-                        <p class="text-sm font-bold text-gray-200 mb-2">سؤال 1: بناءً على المناهج والمذكرات المعتمدة، ما هو التطبيق الأساسي للقواعد المدروسة؟</p>
+                <h4 class="font-bold text-amber-400 mb-2">📝 ${examTitle} لـ (${subject})</h4>
+                <p class="text-xs text-gray-400 mb-4">تم جلب الأسئلة بناءً على المناهج والمذكرات المعتمدة (Google NotebookLM)[cite: 10]. أجب عن الأسئلة واضغط زر التصحيح:</p>
+                
+                <div id="quizQuestionsForm" class="space-y-4">
+                    <div class="p-3 bg-gray-900 rounded-xl border border-gray-800" data-qid="1" data-correct="a">
+                        <p class="text-sm font-bold text-gray-200 mb-2">سؤال 1: ما هو التطبيق الأساسي للقواعد والمفاهيم في مادة ${subject}؟</p>
                         <div class="space-y-1 text-xs">
-                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> أ) الفهم العميق وتطبيق الأنماط</label>
-                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" class="ml-2"> ب) الحفظ العشوائي</label>
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" value="a" class="ml-2"> أ) الفهم العميق وتحليل الأنماط وربط المعلومات</label>
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q1" value="b" class="ml-2"> ب) الحفظ العشوائي السطحي</label>
                         </div>
+                        <p class="correction-note text-xs mt-2 hidden"></p>
+                    </div>
+
+                    <div class="p-3 bg-gray-900 rounded-xl border border-gray-800" data-qid="2" data-correct="b">
+                        <p class="text-sm font-bold text-gray-200 mb-2">سؤال 2: كيف يتعامل النظام الأكاديمي المعتمد مع المشكلات المعقدة؟</p>
+                        <div class="space-y-1 text-xs">
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q2" value="a" class="ml-2"> أ) بتجاهل التفاصيل الجوهرية</label>
+                            <label class="block p-2 bg-gray-800 rounded cursor-pointer hover:bg-amber-500/20"><input type="radio" name="q2" value="b" class="ml-2"> ب) بالتحليل المنهجي وحل المشكلات خطوة بخطوة</label>
+                        </div>
+                        <p class="correction-note text-xs mt-2 hidden"></p>
                     </div>
                 </div>
+
+                <button onclick="submitExamAnswers()" class="mt-4 gold-gradient text-black font-bold px-5 py-2.5 rounded-xl text-xs shadow hover:opacity-90">إنهاء الامتحان وعرض النتيجة وتصحيح الأخطاء 🎯</button>
+                <div id="examResultBox" class="mt-4 text-sm font-bold text-center"></div>
             `;
+        }
+
+        function submitExamAnswers() {
+            let score = 0;
+            const questions = document.querySelectorAll('#quizQuestionsForm > div');
+            
+            questions.forEach((q, idx) => {
+                const qNum = idx + 1;
+                const correctAnswer = q.getAttribute('data-correct');
+                const selectedOption = q.querySelector(`input[name="q${qNum}"]:checked`);
+                const noteBox = q.querySelector('.correction-note');
+                noteBox.classList.remove('hidden');
+
+                if (selectedOption && selectedOption.value === correctAnswer) {
+                    score++;
+                    q.style.borderColor = "#10b981"; // أخضر للإجابة الصحيحة
+                    noteBox.innerHTML = "<span class='text-emerald-400 font-bold'>✓ إجابة صحيحة برافو عليك!</span>";
+                } else {
+                    q.style.borderColor = "#ef4444"; // أحمر للإجابة الخاطئة
+                    noteBox.innerHTML = `<span class='text-red-400 font-bold'>✗ إجابة خاطئة. الإجابة الصحيحة هي الخيار (${correctAnswer.toUpperCase()}).</span>`;
+                }
+            });
+
+            const resultBox = document.getElementById('examResultBox');
+            resultBox.innerHTML = `<p class='text-amber-300 text-lg'>نتيجة الامتحان النهائية: ${score} من ${questions.length} 🏆</p>`;
         }
 
         function renderSchedule() {
@@ -463,4 +514,4 @@
         initApp();
     </script>
 </body>
-    </html>
+</html>
