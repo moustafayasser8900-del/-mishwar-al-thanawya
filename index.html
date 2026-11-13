@@ -66,17 +66,28 @@
         <section id="tab-tracks" class="hidden space-y-6">
             <h2 class="text-xl font-black gold-text mb-4">🎓 المسارات التخصصية وموادها الدراسية</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <!-- مسار الهندسة وعلوم الحاسب -->
                 <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between"><span class="text-xs bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full border border-blue-500/20">مسار علمي</span><span class="text-lg">💻</span></div>
                     <h3 class="font-bold text-lg text-amber-300">مسار الهندسة وعلوم الحاسب</h3>
                     <div class="flex gap-2 flex-wrap">
                         <button onclick="openSubjectPage('مادة البرمجة')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">💻 مادة البرمجة</button>
                         <button onclick="openSubjectPage('مادة الكيمياء')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">🧪 مادة الكيمياء</button>
+                    </div>
+                </div>
+
+                <!-- مسار طب وعلوم الحياة (مستقل) -->
+                <div class="card-bg p-5 rounded-2xl space-y-3">
+                    <div class="flex items-center justify-between"><span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full border border-emerald-500/20">مسار علمي</span><span class="text-lg">🧬</span></div>
+                    <h3 class="font-bold text-lg text-amber-300">مسار طب وعلوم الحياة</h3>
+                    <div class="flex gap-2 flex-wrap">
                         <button onclick="openSubjectPage('مادة الفيزياء')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">⚡ مادة الفيزياء</button>
                         <button onclick="openSubjectPage('مادة الرياضيات')" class="bg-gray-800 hover:bg-amber-500/20 text-gray-200 text-xs px-3 py-2 rounded-lg border border-gray-700 transition font-bold">📐 مادة الرياضيات</button>
                     </div>
                 </div>
 
+                <!-- مسار الآداب والفنون -->
                 <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between"><span class="text-xs bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full border border-purple-500/20">مسار أدبي</span><span class="text-lg">📚</span></div>
                     <h3 class="font-bold text-lg text-amber-300">مسار الآداب والفنون</h3>
@@ -86,6 +97,7 @@
                     </div>
                 </div>
 
+                <!-- مسار إدارة الأعمال -->
                 <div class="card-bg p-5 rounded-2xl space-y-3">
                     <div class="flex items-center justify-between"><span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/20">مسار تجاري</span><span class="text-lg">📈</span></div>
                     <h3 class="font-bold text-lg text-amber-300">مسار إدارة الأعمال</h3>
@@ -138,8 +150,8 @@
                         <option value="اللغة الإنجليزية">اللغة الإنجليزية</option>
                         <option value="مادة البرمجة">مادة البرمجة</option>
                         <option value="مادة الكيمياء">مادة الكيمياء</option>
-                        <option value="مادة الرياضيات">مادة الرياضيات</option>
                         <option value="مادة الفيزياء">مادة الفيزياء</option>
+                        <option value="مادة الرياضيات">مادة الرياضيات</option>
                         <option value="مادة اللغة الثانية">مادة اللغة الثانية</option>
                         <option value="مادة علم النفس">مادة علم النفس</option>
                         <option value="مادة إدارة الأعمال">مادة إدارة الأعمال</option>
@@ -262,7 +274,7 @@
 
         const leaderboardData = [
             { rank: "🥇 1", name: "أحمد إبراهيم", track: "مسار الهندسة وعلوم الحاسب", compliance: "98%", score: "99.5% (امتياز)" },
-            { rank: "🥈 2", name: "محمود رمضان", track: "مسار الطب وعلوم الحياة", compliance: "95%", score: "97.8% (امتياز)" },
+            { rank: "🥈 2", name: "محمود رمضان", track: "مسار طب وعلوم الحياة", compliance: "95%", score: "97.8% (امتياز)" },
             { rank: "🥉 3", name: "يوسف عزت", track: "مسار إدارة الأعمال", compliance: "92%", score: "95.2% (جيد جداً)" },
             { rank: "4", name: "فاطمة محمد", track: "مسار الآداب والفنون", compliance: "90%", score: "94.0% (جيد جداً)" },
             { rank: "5", name: "عبدالرحمن ياسر", track: "مسار الهندسة وعلوم الحاسب", compliance: "88%", score: "91.5% (جيد جداً)" }
@@ -290,7 +302,6 @@
             switchTab(previousTab || 'tracks');
         }
 
-        // دالة جلب وعرض المذكرات تلقائياً من Google Sheets للمادة المحددة
         async function loadNotesFromGoogleSheet(targetSubject) {
             const container = document.getElementById("notes-container");
             if (!container) return;
@@ -452,4 +463,4 @@
         initApp();
     </script>
 </body>
-</html>
+    </html>
